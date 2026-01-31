@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Menu, CheckCircle, XCircle, RotateCcw, Eye, EyeOff, GraduationCap, ChevronRight, BookOpen, PenTool, Lightbulb } from 'lucide-react';
+import { Menu, CheckCircle, XCircle, RotateCcw, Eye, EyeOff, GraduationCap, ChevronRight, BookOpen, PenTool, Lightbulb, FileText, FileDown } from 'lucide-react';
+import { downloadTopic } from '../utils/downloadUtils';
 
 const MainContent = ({ topic, hasAccess, toggleSidebar, onSelectTopic }) => {
   if (!topic) return (
@@ -38,6 +39,54 @@ const MainContent = ({ topic, hasAccess, toggleSidebar, onSelectTopic }) => {
               <div className="topic-badge">Chuyên đề mục lục</div>
               <h2>Nội dung chuyên đề</h2>
               <p>Chọn một bài học hoặc bài tập dưới đây để bắt đầu học</p>
+              <div className="download-actions" style={{ marginTop: '1.5rem', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <button
+                  onClick={() => downloadTopic(topic, 'docx')}
+                  className="btn-download-docx"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '10px 20px',
+                    background: '#2B579A', // Word Blue
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '0.95rem',
+                    fontWeight: '500',
+                    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                    transition: 'transform 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  <FileText size={18} /> Download Word
+                </button>
+                <button
+                  onClick={() => downloadTopic(topic, 'pdf')}
+                  className="btn-download-pdf"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '10px 20px',
+                    background: '#B30B00', // PDF Red
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '0.95rem',
+                    fontWeight: '500',
+                    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                    transition: 'transform 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  <FileDown size={18} /> Download PDF
+                </button>
+              </div>
             </div>
             <div className="directory-grid">
               {topic.children.map((child, idx) => (
