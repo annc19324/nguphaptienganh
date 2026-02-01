@@ -7,7 +7,7 @@ export const communicationInTheFutureTopic = {
             title: 'LÝ THUYẾT: NGỮ PHÁP UNIT 10',
             sections: [
                 {
-                    title: 'A. GRAMMAR (Global Success)',
+                    title: 'A. GRAMMAR',
                     type: 'theory',
                     content: `
 # I. Prepositions of place and time (Giới từ chỉ nơi chốn và thời gian)
@@ -109,42 +109,6 @@ c. Dùng ở cuối các lá thư như một quy ước. Trường hợp này ng
 Ví dụ: Để kết thúc một bức thư, ta viết
 Yours sincerely,
 Yours faithfully,
-`
-                },
-                {
-                    title: 'B. GRAMMAR (Sách Cũ Supplement)',
-                    type: 'theory',
-                    content: `
-# I. THÌ TƯƠNG LAI TIẾP DIỄN
-
-**1. STRUCTURE**
-*   Khẳng định: S + will be + V-ing
-    *   I/ you/ we/ they/ she/ he/ it + will be V-ing.
-*   Phủ định: S + won’t be + V-ing
-    *   I/ you/ we/ they/ she/ he/ it + won’t be V-ing.
-*   Nghi vấn: Will + S + be + V-ing?
-    *   Will I/ you/ we/ they/ she/ he/ it + be V-ing?
-*NOTE: có thể thay "will" bằng "shall" với chủ ngữ là I, we*
-
-**2. USAGE**
-*   Dùng thời TLTD để diễn tả sự việc sẽ đang xảy ra vào 1 thời điểm xác định trong tương lai.
-    *   eg: You will be giving a speech at this time tomorrow.
-
-**3. ADVERBS**
-*   At this time + mốc tương lai: bằng giờ…
-*   At that time
-*   When + S + V (hiện tại)
-
-# II. CÁC ĐỘNG TỪ THEO SAU LÀ TO V VÀ V-ING
-
-Bảng dưới đây phân biệt vị trí của động từ nguyên mẫu có to (to V) và danh động từ (V-ing):
-
-| To V | V-ing |
-|---|---|
-| **Cả hai đều làm chủ ngữ trong câu**, theo sau là động từ số ít.<br>eg:<br>Learning English is fun.<br>To go jogging is a good way of exercising. | eg:<br>Learning English is fun.<br>*(Note: Bảng gốc có vẻ gộp chung ví dụ, V-ing thường làm chủ ngữ phổ biến hơn)* |
-| **Cả hai đều đi sau tobe “is”.**<br>eg:<br>My hobby is collecting coins.<br>His duty is to safeguard the museum. | eg:<br>My hobby is collecting coins.<br>His duty is to safeguard the museum. |
-| **To V theo sau các động từ cụ thể:**<br>Agree (đồng tình), Appear/ seem (dường như), Arrange (sắp đặt), Ask (hỏi), Decide (quyết định), Advise (khuyên), Allow (cho phép), Enable (làm cho có thể), Encourage (khuyến khích), Forbid (cấm), Force (bắt ép), Instruct (hướng dẫn)…<br>eg: I want to buy that shoes. | **Ving theo sau các động từ cụ thể:**<br>Admit (thừa nhận), Avoid (tránh), Consider (coi như), Delay (hoãn), Deny (phủ nhận), Detest/ hate (ghét), Dread (sợ), Enjoy (thích thú), Fancy (thích), Imagine (tưởng tượng), Finish (kết thúc), Keep (cứ duy trì)…<br>eg: Alex denied stealing my bag. |
-| **To V làm tân ngữ của tính từ.**<br>eg: It’s time-consuming to read this report. | **V-ing làm tân ngữ của giới từ.**<br>eg: She keens on singing. |
 `
                 }
             ]
