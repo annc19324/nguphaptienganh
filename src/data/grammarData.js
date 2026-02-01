@@ -27,6 +27,7 @@ import { pronunciationStressTopic } from './topics/pronunciationStress';
 import { communicationSituationsTopic } from './topics/communicationSituations';
 import { errorCorrectionTopic } from './topics/errorCorrection';
 import { sentenceTransformationTopic } from './topics/sentenceTransformation';
+import { communicationInTheFutureTopic } from './topics/communicationInTheFuture';
 
 
 
@@ -61,7 +62,8 @@ export const TOPICS = [
   pronunciationStressTopic,
   communicationSituationsTopic,
   errorCorrectionTopic,
-  sentenceTransformationTopic
+  sentenceTransformationTopic,
+  communicationInTheFutureTopic
 
 
 
