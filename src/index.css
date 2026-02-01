@@ -974,4 +974,84 @@ b {
     width: 100%;
     justify-content: center;
   }
+}/* Theory Content Styles */
+.theory-content {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.theory-h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.theory-h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.theory-p {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.theory-list-item {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.theory-list-item .bullet {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.theory-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.theory-table th {
+    background: var(--surface-low);
+    color: var(--primary);
+    font-weight: 800;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+
+.theory-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-main);
+    vertical-align: top;
+}
+
+.theory-table tr:last-child td {
+    border-bottom: none;
+}
+
+.theory-table tr:hover td {
+    background: rgba(99, 102, 241, 0.02);
 }

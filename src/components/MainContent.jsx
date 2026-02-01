@@ -158,12 +158,98 @@ const Section = ({ section, hasAccess }) => {
           </div>
         )}
 
+        {section.type === 'theory' && (
+          <div className="theory-content">
+            <MarkdownRenderer content={section.content} />
+          </div>
+        )}
+
         {section.type === 'exercise' && (
           <ExerciseSection questions={section.questions} hasAccess={hasAccess} />
         )}
       </div>
     </div>
   );
+};
+
+const MarkdownRenderer = ({ content }) => {
+  if (!content) return null;
+
+  const lines = content.split('\n');
+  const elements = [];
+  let tableBuffer = [];
+  let inTable = false;
+
+  const processTable = (buffer) => {
+    if (buffer.length === 0) return null;
+    const headers = buffer[0].split('|').filter(c => c.trim()).map(c => c.trim());
+    const rows = buffer.slice(2).map(row => row.split('|').filter(c => c.trim()).map(c => c.trim()));
+    return (
+      <div className="table-wrapper" key={`table-${Date.now()}-${Math.random()}`}>
+        <table className="theory-table">
+          <thead>
+            <tr>
+              {headers.map((h, i) => <th key={i} dangerouslySetInnerHTML={{ __html: parseInline(h) }} />)}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, i) => (
+              <tr key={i}>
+                {row.map((cell, j) => <td key={j} dangerouslySetInnerHTML={{ __html: parseInline(cell) }} />)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
+  const parseInline = (text) => {
+    if (!text) return '';
+    // Bold
+    let html = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Line breaks in table cells <br>
+    html = html.replace(/&lt;br&gt;/g, '<br/>').replace(/<br>/g, '<br/>');
+    return html;
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    if (line.startsWith('|')) {
+      inTable = true;
+      tableBuffer.push(line);
+      continue;
+    } else if (inTable) {
+      inTable = false;
+      elements.push(processTable(tableBuffer));
+      tableBuffer = [];
+    }
+
+    if (!line) continue;
+
+    if (line.startsWith('# ')) {
+      elements.push(<h3 key={i} className="theory-h1">{line.replace('# ', '')}</h3>);
+    } else if (line.startsWith('## ')) {
+      elements.push(<h4 key={i} className="theory-h2">{line.replace('## ', '')}</h4>);
+    } else if (line.startsWith('•') || line.startsWith('- ')) {
+      elements.push(
+        <div key={i} className="theory-list-item">
+          <span className="bullet">•</span>
+          <span dangerouslySetInnerHTML={{ __html: parseInline(line.replace(/^[•-]\s*/, '')) }} />
+        </div>
+      );
+    } else {
+      elements.push(<p key={i} className="theory-p" dangerouslySetInnerHTML={{ __html: parseInline(line) }} />);
+    }
+  }
+
+  // Flush remaining table
+  if (inTable && tableBuffer.length > 0) {
+    elements.push(processTable(tableBuffer));
+  }
+
+  return <div className="markdown-body">{elements}</div>;
 };
 
 const ExerciseSection = ({ questions, hasAccess }) => {
