@@ -96,7 +96,6 @@ const MainContent = ({ topic, hasAccess, toggleSidebar, onSelectTopic }) => {
                   style={{ animationDelay: `${idx * 0.1}s` }}
                   onClick={() => {
                     onSelectTopic(child.id);
-                    if (window.innerWidth <= 768) toggleSidebar();
                   }}
                 >
                   <div className="card-icon">

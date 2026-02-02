@@ -1,14 +1,52 @@
 import React, { useState } from 'react';
+import { Routes, Route, Navigate, useNavigate, useParams, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import { TOPICS } from './data/grammarData';
 
-function App() {
+const findTopic = (id, topics) => {
+  for (const topic of topics) {
+    if (topic.id === id) return topic;
+    if (topic.children) {
+      const found = findTopic(id, topic.children);
+      if (found) return found;
+    }
+  }
+  return null;
+};
+
+const TopicWrapper = ({ hasAccess, toggleSidebar, onSelectTopic }) => {
+  const { topicId } = useParams();
+  const topic = findTopic(topicId, TOPICS); // || TOPICS[0]; removed fallback to be strict, or handle 404
+
+  // If not found, maybe redirect to first? or Show 404? 
+  // For now let's match behavior: if topicId is valid use it, else null -> MainContent handles null?
+  // Current MainContent handles null topic by showing welcome.
+
+  return (
+    <MainContent
+      topic={topic}
+      hasAccess={hasAccess}
+      toggleSidebar={toggleSidebar}
+      onSelectTopic={onSelectTopic}
+    />
+  );
+};
+
+
+
+const AppContent = () => {
   const [hasAccess, setHasAccess] = useState(false);
-  const [activeTopicId, setActiveTopicId] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(340);
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const navigate = useNavigate();
+  const location = useLocation(); // Now we can use location
+
+  // Extract activeTopicId from location
+  // Path: /topic/:id
+  const match = location.pathname.match(/\/topic\/([^/]+)/);
+  const activeTopicId = match ? match[1] : null;
 
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -19,18 +57,12 @@ function App() {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  const findTopic = (id, topics) => {
-    for (const topic of topics) {
-      if (topic.id === id) return topic;
-      if (topic.children) {
-        const found = findTopic(id, topic.children);
-        if (found) return found;
-      }
+  const handleSelectTopic = (id) => {
+    navigate(`/topic/${id}`);
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
     }
-    return null;
   };
-
-  const activeTopic = findTopic(activeTopicId, TOPICS) || TOPICS[0];
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -41,7 +73,7 @@ function App() {
       <Sidebar
         topics={TOPICS}
         activeTopicId={activeTopicId}
-        onSelectTopic={setActiveTopicId}
+        onSelectTopic={handleSelectTopic}
         hasAccess={hasAccess}
         onUnlock={setHasAccess}
         isOpen={isSidebarOpen}
@@ -53,12 +85,21 @@ function App() {
       />
 
       <div className="main-content-importer">
-        <MainContent
-          topic={activeTopic}
-          hasAccess={hasAccess}
-          toggleSidebar={toggleSidebar}
-          onSelectTopic={setActiveTopicId}
-        />
+        <Routes>
+          {/* Redirect / to first topic or distinct welcome page? 
+               User asked "update, tôi muốn mỗi topic là 1 rout khác nhau".
+               Old app defaulted to TOPICS[0]. Let's keep a default redirect or welcome.
+               Let's show MainContent with no topic (Welcome screen) on /.
+           */}
+          <Route path="/" element={<MainContent topic={null} toggleSidebar={toggleSidebar} />} />
+          <Route path="/topic/:topicId" element={
+            <TopicWrapper
+              hasAccess={hasAccess}
+              toggleSidebar={toggleSidebar}
+              onSelectTopic={handleSelectTopic}
+            />
+          } />
+        </Routes>
       </div>
 
       <style>{`
@@ -79,4 +120,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppContent;

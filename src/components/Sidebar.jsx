@@ -67,6 +67,20 @@ const Sidebar = ({
     };
   }, [resize, stopResizing]);
 
+  // Auto-expand parent topic when activeTopicId changes
+  useEffect(() => {
+    if (activeTopicId && topics) {
+      for (const topic of topics) {
+        if (topic.children) {
+          const hasActiveChild = topic.children.some(child => child.id === activeTopicId);
+          if (hasActiveChild) {
+            setExpandedTopics(prev => ({ ...prev, [topic.id]: true }));
+          }
+        }
+      }
+    }
+  }, [activeTopicId, topics]);
+
   return (
     <div
       className={`sidebar ${isOpen ? 'open' : ''}`}
@@ -140,8 +154,6 @@ const Sidebar = ({
                 onSelectTopic(topic.id);
                 if (topic.children) {
                   toggleTopic(topic.id);
-                } else {
-                  if (window.innerWidth <= 768) toggleSidebar();
                 }
               }}
             >
@@ -163,7 +175,6 @@ const Sidebar = ({
                     onClick={(e) => {
                       e.stopPropagation();
                       onSelectTopic(child.id);
-                      if (window.innerWidth <= 768) toggleSidebar();
                     }}
                   >
                     <span className="title">{child.title}</span>
