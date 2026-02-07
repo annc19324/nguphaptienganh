@@ -266,6 +266,74 @@ const ExerciseSection = ({ questions, hasAccess }) => {
     }
   };
 
+  const checkAnswer = (question, input) => {
+    if (!input) return false;
+    // Enhanced normalization: strip parens so "(that)" becomes "that"
+    const normalize = (s) => s.trim().toLowerCase().replace(/[.,!?;]+$/, '').replace(/[()]/g, '').replace(/\s+/g, ' ');
+    const userClean = normalize(input);
+
+    const options = (question.answer || '').split('|');
+
+    for (let opt of options) {
+      if (!opt) continue;
+
+      // 1. Prepare Regex for Flexible Matching
+      // Normalize option first to standard form, but keep parens for logic processing
+      let cleanOpt = opt.trim().toLowerCase().replace(/[.,!?;]+$/, '');
+
+      // Escape special chars except ( and )
+      // We need to be careful not to double-escape if we processed it before
+      let regexStr = cleanOpt.replace(/[\[\]\{\}\.\*\+\?\^\$\|\\]/g, '\\$&');
+
+      // Replace (content) with (?:content)? to make it optional
+      // Also allow for optional preceding space
+      // Case 1: "word (optional)" -> "word(?:\s+optional)?"
+      regexStr = regexStr.replace(/\s*\(((?:[^()]+))\)/g, '(?:\\s+$1)?');
+
+      // Replace remaining literal spaces with \s+ to be robust
+      regexStr = regexStr.replace(/\s+/g, '\\s+');
+
+      const regex = new RegExp(`^${regexStr}$`, 'i');
+
+      // Check direct match
+      if (regex.test(userClean)) return true;
+
+      // 2. Handle Prefix Overlap (e.g. "She told me" in prompt)
+      // Use regex split to reliably find the break
+      if (question.text && /_{3,}/.test(question.text)) {
+        const parts = question.text.split(/_{3,}/);
+        let promptContext = parts[0];
+
+        // Clean prompt context: handle ->, =>, etc.
+        const separators = ['->', '=>', '→'];
+        for (const sep of separators) {
+          if (promptContext.includes(sep)) {
+            promptContext = promptContext.split(sep).pop();
+          }
+        }
+
+        const promptSuffix = normalize(promptContext);
+
+        if (promptSuffix.length > 0) {
+          const combinedUser = normalize(promptSuffix + ' ' + userClean);
+
+          // Console log for debugging
+          console.log(`[CheckAnswer] ID: ${question.id}`, {
+            opt,
+            regex: regexStr,
+            promptSuffix,
+            userClean,
+            combinedUser,
+            match: regex.test(combinedUser)
+          });
+
+          if (regex.test(combinedUser)) return true;
+        }
+      }
+    }
+    return false;
+  };
+
   const checkAnswers = () => {
     const nr = {};
     questions.forEach(q => {
@@ -274,22 +342,29 @@ const ExerciseSection = ({ questions, hasAccess }) => {
         const uAns = answers[q.id] || {};
         isCorrect = (uAns.selected || '').trim() === (q.answer || '').trim() &&
           (uAns.correction || '').trim().toLowerCase() === (q.correction || '').trim().toLowerCase();
-      } else {
+      } else if (q.text && q.text.match(/_{3,}/g) && (q.text.match(/_{3,}/g) || []).length > 1) {
+        // Multi-gap fill
         const correctAnswers = (q.answer || '').split('|').map(a => a.trim().toLowerCase());
         const userAnswer = answers[q.id];
         const gapsCount = (q.text.match(/_{3,}/g) || []).length;
-        if (gapsCount > 1) {
-          if (typeof userAnswer === 'object' && userAnswer !== null) {
-            let all = true;
-            for (let i = 0; i < gapsCount; i++) {
-              if ((userAnswer[i] || '').trim().toLowerCase() !== (correctAnswers[i] || '').trim().toLowerCase()) {
-                all = false; break;
-              }
+        if (typeof userAnswer === 'object' && userAnswer !== null) {
+          let all = true;
+          for (let i = 0; i < gapsCount; i++) {
+            if ((userAnswer[i] || '').trim().toLowerCase() !== (correctAnswers[i] || '').trim().toLowerCase()) {
+              all = false; break;
             }
-            isCorrect = all;
           }
+          isCorrect = all;
+        }
+      } else {
+        // Standard single answer (multiple choice or fill blank)
+        const userAnswer = answers[q.id];
+        if (q.type === 'multiple_choice') {
+          const correctAnswers = (q.answer || '').split('|').map(a => a.trim().toLowerCase());
+          isCorrect = correctAnswers.includes((userAnswer || '').trim().toLowerCase());
         } else {
-          isCorrect = (typeof userAnswer === 'string' ? userAnswer : '').trim().toLowerCase() === (correctAnswers[0] || '').trim().toLowerCase();
+          // Fill blank with advanced checking
+          isCorrect = checkAnswer(q, typeof userAnswer === 'string' ? userAnswer : '');
         }
       }
       nr[q.id] = isCorrect ? 'correct' : 'incorrect';
@@ -297,11 +372,58 @@ const ExerciseSection = ({ questions, hasAccess }) => {
     setResults(nr);
   };
 
+  const checkSingleResult = (qId) => {
+    const q = questions.find(item => item.id === qId);
+    if (!q) return;
+
+    let isCorrect = false;
+    if (q.type === 'error_correction') {
+      const uAns = answers[q.id] || {};
+      isCorrect = (uAns.selected || '').trim() === (q.answer || '').trim() &&
+        (uAns.correction || '').trim().toLowerCase() === (q.correction || '').trim().toLowerCase();
+    } else if (q.text && q.text.match(/_{3,}/g) && (q.text.match(/_{3,}/g) || []).length > 1) {
+      // Multi-gap fill
+      const correctAnswers = (q.answer || '').split('|').map(a => a.trim().toLowerCase());
+      const userAnswer = answers[q.id];
+      const gapsCount = (q.text.match(/_{3,}/g) || []).length;
+      if (typeof userAnswer === 'object' && userAnswer !== null) {
+        let all = true;
+        for (let i = 0; i < gapsCount; i++) {
+          if ((userAnswer[i] || '').trim().toLowerCase() !== (correctAnswers[i] || '').trim().toLowerCase()) {
+            all = false; break;
+          }
+        }
+        isCorrect = all;
+      }
+    } else {
+      const userAnswer = answers[q.id];
+      if (q.type === 'multiple_choice') {
+        const correctAnswers = (q.answer || '').split('|').map(a => a.trim().toLowerCase());
+        isCorrect = correctAnswers.includes((userAnswer || '').trim().toLowerCase());
+      } else {
+        isCorrect = checkAnswer(q, typeof userAnswer === 'string' ? userAnswer : '');
+      }
+    }
+
+    setResults(prev => ({
+      ...prev,
+      [qId]: isCorrect ? 'correct' : 'incorrect'
+    }));
+  };
+
   return (
     <div className="exercise-section">
       <div className="questions-list">
         {questions.map((q) => (
-          <QuestionItem key={q.id} question={q} hasAccess={hasAccess} userAnswer={answers[q.id] || ''} onChange={(v) => handleInputChange(q.id, v)} result={results[q.id]} />
+          <QuestionItem
+            key={q.id}
+            question={q}
+            hasAccess={hasAccess}
+            userAnswer={answers[q.id] || ''}
+            onChange={(v) => handleInputChange(q.id, v)}
+            result={results[q.id]}
+            onCheck={() => checkSingleResult(q.id)}
+          />
         ))}
       </div>
       <div className="exercise-actions">
@@ -312,7 +434,7 @@ const ExerciseSection = ({ questions, hasAccess }) => {
   );
 };
 
-const QuestionItem = ({ question, hasAccess, userAnswer, onChange, result }) => {
+const QuestionItem = ({ question, hasAccess, userAnswer, onChange, result, onCheck }) => {
   const [showAnswer, setShowAnswer] = useState(false);
   const tagRegex = /(<u>.*?<\/u>|<b>.*?<\/b>)/g;
 
@@ -363,7 +485,18 @@ const QuestionItem = ({ question, hasAccess, userAnswer, onChange, result }) => 
           if (index === parts.length - 1) return <React.Fragment key={index}>{formatText(part)}</React.Fragment>;
           const curr = userAnswer && typeof userAnswer === 'object' ? userAnswer[index] || '' : userAnswer || '';
           const proper = correctAnswers[index] || '';
-          const gapRes = result ? (curr.trim().toLowerCase() === proper ? 'correct' : 'incorrect') : '';
+
+          let gapRes = '';
+          if (result) {
+            if (parts.length === 2) {
+              // Single gap: trust the complex check result
+              gapRes = result;
+            } else {
+              // Multi gap fallback
+              gapRes = (curr.trim().toLowerCase() === proper ? 'correct' : 'incorrect');
+            }
+          }
+
           const width = `${Math.min(Math.max(120, Math.max(curr.length, proper.length) * 9), 600)}px`;
           return (
             <React.Fragment key={index}>
@@ -433,9 +566,16 @@ const QuestionItem = ({ question, hasAccess, userAnswer, onChange, result }) => 
         )}
       </div>
       <div className="answer-section">
-        <button className={`reveal-btn ${showAnswer ? 'active' : ''}`} onClick={() => hasAccess && setShowAnswer(!showAnswer)}>
-          {showAnswer ? <EyeOff size={16} /> : <Eye size={16} />} {showAnswer ? 'Ẩn đáp án & Giải thích' : 'Xem đáp án & Giải thích'}
-        </button>
+        <div className="btn-group" style={{ display: 'flex', alignItems: 'center' }}>
+          {!result && (
+            <button className="check-btn" onClick={onCheck}>
+              <CheckCircle size={16} /> Check Answer
+            </button>
+          )}
+          <button className={`reveal-btn ${showAnswer ? 'active' : ''}`} onClick={() => hasAccess && setShowAnswer(!showAnswer)}>
+            {showAnswer ? <EyeOff size={16} /> : <Eye size={16} />} {showAnswer ? 'Ẩn đáp án & Giải thích' : 'Xem đáp án & Giải thích'}
+          </button>
+        </div>
         {showAnswer && (
           <div className="answer-content">
             <div className="key-row">

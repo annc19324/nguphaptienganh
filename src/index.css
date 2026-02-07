@@ -619,7 +619,7 @@ button {
 .option-label-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   flex: 1;
 }
 
@@ -627,13 +627,15 @@ button {
   font-weight: 800;
   color: var(--primary);
   background: var(--surface-low);
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  flex: none;
 }
 
 .option-label.selected .option-letter {
@@ -785,11 +787,7 @@ b {
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
 }
 
-.option-letter {
-  font-weight: 800;
-  color: var(--primary);
-  font-size: 0.85rem;
-}
+
 
 .option-content {
   font-weight: 600;
@@ -893,6 +891,29 @@ b {
   text-transform: uppercase;
 }
 
+
+.check-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface-low);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 12px;
+  margin-top: 1.5rem;
+}
+
+.check-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
 .input-field {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -914,11 +935,13 @@ b {
 .input-field.correct {
   border-color: var(--success);
   background: rgba(16, 185, 129, 0.02);
+  color: var(--success);
 }
 
 .input-field.incorrect {
   border-color: var(--error);
   background: rgba(239, 68, 68, 0.02);
+  color: var(--error);
 }
 
 .correct-correction-hint {
@@ -974,84 +997,107 @@ b {
     width: 100%;
     justify-content: center;
   }
-}/* Theory Content Styles */
+}
+
+/* Theory Content Styles */
 .theory-content {
-    font-size: 1.05rem;
-    color: var(--text-main);
-    line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.8;
 }
 
 .theory-h1 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
 }
 
 .theory-h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--secondary);
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .theory-p {
-    margin-bottom: 1rem;
-    color: var(--text-main);
+  margin-bottom: 1rem;
+  color: var(--text-main);
 }
 
 .theory-list-item {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-    padding-left: 0.5rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .theory-list-item .bullet {
-    color: var(--primary);
-    font-weight: 800;
+  color: var(--primary);
+  font-weight: 800;
 }
 
 .table-wrapper {
-    overflow-x: auto;
-    margin: 1.5rem 0;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
-    background: var(--surface);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .theory-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
 }
 
 .theory-table th {
-    background: var(--surface-low);
-    color: var(--primary);
-    font-weight: 800;
-    text-align: left;
-    padding: 1rem;
-    border-bottom: 2px solid var(--border);
-    white-space: nowrap;
+  background: var(--surface-low);
+  color: var(--primary);
+  font-weight: 800;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
 }
 
 .theory-table td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-main);
-    vertical-align: top;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+  vertical-align: top;
 }
 
 .theory-table tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .theory-table tr:hover td {
-    background: rgba(99, 102, 241, 0.02);
+  background: rgba(99, 102, 241, 0.02);
+}
+
+.check-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface-low);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 12px;
+}
+
+.check-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
 }

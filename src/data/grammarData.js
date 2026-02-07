@@ -28,6 +28,8 @@ import { communicationSituationsTopic } from './topics/communicationSituations';
 import { errorCorrectionTopic } from './topics/errorCorrection';
 import { sentenceTransformationTopic } from './topics/sentenceTransformation';
 import { communicationInTheFutureTopic } from './topics/communicationInTheFuture';
+import { scienceAndTechnologyTopic } from './topics/scienceAndTechnology';
+import { lifeOnOtherPlanetsTopic } from './topics/lifeOnOtherPlanets';
 
 
 
@@ -63,7 +65,9 @@ export const TOPICS = [
   communicationSituationsTopic,
   errorCorrectionTopic,
   sentenceTransformationTopic,
-  communicationInTheFutureTopic
+  communicationInTheFutureTopic,
+  scienceAndTechnologyTopic,
+  lifeOnOtherPlanetsTopic
 
 
 
