@@ -278,19 +278,36 @@ const ExerciseSection = ({ questions, hasAccess }) => {
       if (!opt) continue;
 
       // 1. Prepare Regex for Flexible Matching
-      // Normalize option first to standard form, but keep parens for logic processing
+      // Normalize option first
       let cleanOpt = opt.trim().toLowerCase().replace(/[.,!?;]+$/, '');
 
-      // Escape special chars except ( and )
-      // We need to be careful not to double-escape if we processed it before
-      let regexStr = cleanOpt.replace(/[\[\]\{\}\.\*\+\?\^\$\|\\]/g, '\\$&');
+      // Escape special regex chars, BUT preserve characters we use for syntax: ( ) / |
+      // We will handle / and ( ) manually. 
+      // Actually, we should escape everything first, then unescape or process our syntax if strictly defined.
+      // But simpler: Handle our syntax specific chars, escape others.
+      // Safe chars to escape: [ ] { } . * + ? ^ $ \ 
+      let regexStr = cleanOpt.replace(/[\[\]\{\}\.\*\+\?\^\$\\]/g, '\\$&');
 
-      // Replace (content) with (?:content)? to make it optional
-      // Also allow for optional preceding space
-      // Case 1: "word (optional)" -> "word(?:\s+optional)?"
-      regexStr = regexStr.replace(/\s*\(((?:[^()]+))\)/g, '(?:\\s+$1)?');
+      // 1.5 Handle simple alternatives like he/she -> (?:he|she)
+      // We look for word/word(s) patterns. 
+      // Note: We match against alphanumeric and extended chars (for Vietnamese if needed, though mostly English here)
+      // Regex: match word sequence separated by /
+      regexStr = regexStr.replace(/([a-zA-Z0-9à-ỹÀ-Ỹ_']+)(?:\/([a-zA-Z0-9à-ỹÀ-Ỹ_']+))+/g, function (match) {
+        return '(?:' + match.split('/').join('|') + ')';
+      });
 
-      // Replace remaining literal spaces with \s+ to be robust
+      // 1.6 Handle optional groups (text) -> (?:text)?
+      // We specifically look for parens that are NOT part of the (?:...) groups we just created.
+      // The groups created above start with (?:
+      // So we target ( followed by negation of ?
+      // Also handle preceding space for " (that)" -> "(?:\s+that)?"
+
+      // Handle " (text)" -> space is sticky to the optional group
+      regexStr = regexStr.replace(/\s+\((?!\?)([^)]+)\)/g, '(?:\\s+$1)?');
+      // Handle "(text)" without preceding space
+      regexStr = regexStr.replace(/\((?!\?)([^)]+)\)/g, '(?:$1)?');
+
+      // Normalize spaces in regex -> \s+
       regexStr = regexStr.replace(/\s+/g, '\\s+');
 
       const regex = new RegExp(`^${regexStr}$`, 'i');
@@ -299,7 +316,6 @@ const ExerciseSection = ({ questions, hasAccess }) => {
       if (regex.test(userClean)) return true;
 
       // 2. Handle Prefix Overlap (e.g. "She told me" in prompt)
-      // Use regex split to reliably find the break
       if (question.text && /_{3,}/.test(question.text)) {
         const parts = question.text.split(/_{3,}/);
         let promptContext = parts[0];
@@ -315,8 +331,28 @@ const ExerciseSection = ({ questions, hasAccess }) => {
         const promptSuffix = normalize(promptContext);
 
         if (promptSuffix.length > 0) {
-          const combinedUser = normalize(promptSuffix + ' ' + userClean);
+          // Smart Join: Dedup overlap
+          // e.g. Prompt: "said that", User: "that he" -> "said that he"
+          // e.g. Prompt: "said that", User: "he" -> "said that he"
 
+          let merged = promptSuffix + ' ' + userClean;
+
+          // Check for overlap of 1-3 words
+          const pWords = promptSuffix.split(' ');
+          const uWords = userClean.split(' ');
+
+          // Try matching suffix of P with prefix of U
+          for (let len = Math.min(pWords.length, uWords.length, 3); len > 0; len--) {
+            const pSuffix = pWords.slice(-len).join(' ');
+            const uPrefix = uWords.slice(0, len).join(' ');
+            if (pSuffix === uPrefix) {
+              // Overlap found, remove from User part
+              merged = promptSuffix + ' ' + uWords.slice(len).join(' ');
+              break;
+            }
+          }
+
+          const combinedUser = normalize(merged);
           // Console log for debugging
           console.log(`[CheckAnswer] ID: ${question.id}`, {
             opt,
@@ -440,6 +476,17 @@ const QuestionItem = ({ question, hasAccess, userAnswer, onChange, result, onChe
 
   const formatText = (text) => {
     if (!text) return text;
+    // Handle newlines
+    if (text.includes('\n') || text.includes('\\n')) {
+      const parts = text.split(/(?:\\n|\n)/g);
+      return parts.map((part, index) => (
+        <React.Fragment key={index}>
+          {index > 0 && <br />}
+          {formatText(part)}
+        </React.Fragment>
+      ));
+    }
+
     return text.split(tagRegex).map((seg, i) => {
       if (seg.startsWith('<u>')) return <span key={i} className="formatted-u">{seg.slice(3, -4)}</span>;
       if (seg.startsWith('<b>')) return <b key={i}>{seg.slice(3, -4)}</b>;
@@ -557,7 +604,19 @@ const QuestionItem = ({ question, hasAccess, userAnswer, onChange, result, onChe
             )}
             {question.type !== 'error_correction' && !question.text.match(/_{3,}/) && (
               <div className="input-wrapper">
-                <input type="text" className={`input-field answer-input ${result || ''}`} placeholder="Your answer..." value={userAnswer || ''} onChange={(e) => !result && onChange(e.target.value)} disabled={!!result} />
+                {(question.answer || '').length > 50 ? (
+                  <textarea
+                    className={`input-field answer-input ${result || ''}`}
+                    placeholder="Type your answer here..."
+                    value={userAnswer || ''}
+                    onChange={(e) => !result && onChange(e.target.value)}
+                    disabled={!!result}
+                    rows={2}
+                    style={{ minHeight: '60px', resize: 'vertical' }}
+                  />
+                ) : (
+                  <input type="text" className={`input-field answer-input ${result || ''}`} placeholder="Your answer..." value={userAnswer || ''} onChange={(e) => !result && onChange(e.target.value)} disabled={!!result} />
+                )}
                 {result === 'correct' && <CheckCircle size={20} color="var(--success)" className="status-icon" style={{ marginLeft: '10px' }} />}
                 {result === 'incorrect' && <XCircle size={20} color="var(--error)" className="status-icon" style={{ marginLeft: '10px' }} />}
               </div>
