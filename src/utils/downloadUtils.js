@@ -64,8 +64,17 @@ const getDownloadData = (topic) => {
                             questions: section.questions
                         });
                     }
-                    // Handle Theory (custom)
-                    else if (section.type === 'custom' && section.content && section.content.length > 0) {
+                    // Handle Theory (custom) - content can be Array or String
+                    else if (section.type === 'custom' && section.content && (section.content.length > 0 || typeof section.content === 'string')) {
+                        sectionsData.push({
+                            type: 'theory',
+                            title: cleanText(child.title),
+                            subtitle: cleanText(section.subtitle || section.title),
+                            content: section.content
+                        });
+                    }
+                    // Handle 'theory' type directly if used
+                    else if (section.type === 'theory' && section.content) {
                         sectionsData.push({
                             type: 'theory',
                             title: cleanText(child.title),
@@ -158,34 +167,44 @@ const generateDocxSafe = async (topic, sections) => {
         }
 
         if (section.type === 'theory') {
-            section.content.forEach(contentItem => {
-                if (contentItem.subtitle) {
-                    children.push(new Paragraph({
-                        children: [new TextRun({ text: cleanText(contentItem.subtitle), bold: true, size: 24 })],
-                        spacing: { before: 100 }
-                    }));
-                }
-
-                if (contentItem.cases) {
-                    contentItem.cases.forEach(c => {
-                        const cellChildren = [];
-                        if (c.label) {
-                            cellChildren.push(new TextRun({ text: cleanText(c.label) + ": ", bold: true }));
-                        }
-                        if (c.formula) {
-                            // Handle multiline formula
-                            const formulaText = cleanText(c.formula);
-                            const runs = createMultilineTextRuns(formulaText);
-                            cellChildren.push(...runs);
-                        }
-
+            if (Array.isArray(section.content)) {
+                section.content.forEach(contentItem => {
+                    if (contentItem.subtitle) {
                         children.push(new Paragraph({
-                            children: cellChildren,
-                            spacing: { after: 100 }
+                            children: [new TextRun({ text: cleanText(contentItem.subtitle), bold: true, size: 24 })],
+                            spacing: { before: 100 }
                         }));
-                    });
-                }
-            });
+                    }
+
+                    if (contentItem.cases) {
+                        contentItem.cases.forEach(c => {
+                            const cellChildren = [];
+                            if (c.label) {
+                                cellChildren.push(new TextRun({ text: cleanText(c.label) + ": ", bold: true }));
+                            }
+                            if (c.formula) {
+                                // Handle multiline formula
+                                const formulaText = cleanText(c.formula);
+                                const runs = createMultilineTextRuns(formulaText);
+                                cellChildren.push(...runs);
+                            }
+
+                            children.push(new Paragraph({
+                                children: cellChildren,
+                                spacing: { after: 100 }
+                            }));
+                        });
+                    }
+                });
+            } else if (typeof section.content === 'string') {
+                // Handle string content
+                const text = cleanText(section.content);
+                const runs = createMultilineTextRuns(text);
+                children.push(new Paragraph({
+                    children: runs,
+                    spacing: { before: 100, after: 100 }
+                }));
+            }
         }
         else if (section.type === 'exercise') {
             section.questions.forEach(q => {
@@ -326,28 +345,37 @@ const generatePdfSafe = async (topic, sections) => {
 
         if (section.type === 'theory') {
             doc.setFont(undefined, 'normal');
-            section.content.forEach(item => {
-                checkPageBreak(10);
-                if (item.subtitle) {
-                    doc.setFont(undefined, 'bold');
-                    y = printText(cleanText(item.subtitle), margin, y, { maxWidth: contentWidth });
-                    y += 3;
-                }
-
-                doc.setFont(undefined, 'normal');
-                if (item.cases) {
-                    item.cases.forEach(c => {
-                        let text = "";
-                        if (c.label) text += cleanText(c.label) + ": ";
-                        if (c.formula) text += cleanText(c.formula);
-
-                        // Increase y slightly before each case
-                        y = printText(text, margin + 5, y, { maxWidth: contentWidth - 5 });
+            if (Array.isArray(section.content)) {
+                section.content.forEach(item => {
+                    checkPageBreak(10);
+                    if (item.subtitle) {
+                        doc.setFont(undefined, 'bold');
+                        y = printText(cleanText(item.subtitle), margin, y, { maxWidth: contentWidth });
                         y += 3;
-                    });
-                }
+                    }
+
+                    doc.setFont(undefined, 'normal');
+                    if (item.cases) {
+                        item.cases.forEach(c => {
+                            let text = "";
+                            if (c.label) text += cleanText(c.label) + ": ";
+                            if (c.formula) text += cleanText(c.formula);
+
+                            // Increase y slightly before each case
+                            y = printText(text, margin + 5, y, { maxWidth: contentWidth - 5 });
+                            y += 3;
+                        });
+                    }
+                    y += 5;
+                });
+            } else if (typeof section.content === 'string') {
+                // Handle string content for simple theory text
+                checkPageBreak(10);
+                doc.setFont(undefined, 'normal');
+                const text = cleanText(section.content);
+                y = printText(text, margin, y, { maxWidth: contentWidth });
                 y += 5;
-            });
+            }
         }
         else if (section.type === 'exercise') {
             section.questions.forEach(q => {
