@@ -29,24 +29,48 @@ const loadFont = async (url) => {
 const cleanText = (input) => {
     if (input === null || input === undefined) return "";
     let text = String(input);
+
     // Remove HTML
     text = text.replace(/<[^>]*>/g, "");
-    // Replace multiple spaces
-    text = text.replace(/\s+/g, " ");
+
+    // Normalize newlines
+    text = text.replace(/\\n/g, "\n"); // Handle literal \n if present
+    text = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+    // Replace tabs with space
+    text = text.replace(/\t/g, " ");
+
+    // Replace multiple spaces (excluding newlines)
+    text = text.replace(/ +/g, " ");
+
+    // Ensure no more than 2 consecutive newlines
+    text = text.replace(/\n{3,}/g, "\n\n");
+
     return text.trim();
 };
 
-const getAllQuestions = (topic) => {
+const getDownloadData = (topic) => {
     let sectionsData = [];
     if (topic && topic.children) {
         topic.children.forEach(child => {
             if (child.sections) {
                 child.sections.forEach(section => {
+                    // Handle Exercises
                     if (section.type === 'exercise' && section.questions && section.questions.length > 0) {
                         sectionsData.push({
+                            type: 'exercise',
                             title: cleanText(child.title),
                             subtitle: cleanText(section.subtitle || section.title),
                             questions: section.questions
+                        });
+                    }
+                    // Handle Theory (custom)
+                    else if (section.type === 'custom' && section.content && section.content.length > 0) {
+                        sectionsData.push({
+                            type: 'theory',
+                            title: cleanText(child.title),
+                            subtitle: cleanText(section.subtitle || section.title),
+                            content: section.content
                         });
                     }
                 });
@@ -58,10 +82,16 @@ const getAllQuestions = (topic) => {
 
 export const downloadTopic = async (topic, format) => {
     try {
+        const data = getDownloadData(topic);
+        if (data.length === 0) {
+            alert("Không có dữ liệu để tải xuống.");
+            return;
+        }
+
         if (format === 'docx') {
-            await generateDocxSafe(topic);
+            await generateDocxSafe(topic, data);
         } else if (format === 'pdf') {
-            await generatePdfSafe(topic);
+            await generatePdfSafe(topic, data);
         }
     } catch (error) {
         console.error("Download failed:", error);
@@ -69,13 +99,16 @@ export const downloadTopic = async (topic, format) => {
     }
 };
 
-const generateDocxSafe = async (topic) => {
-    const exercises = getAllQuestions(topic);
-    if (exercises.length === 0) {
-        alert("Không có bài tập để tải xuống.");
-        return;
-    }
+const createMultilineTextRuns = (text, options = {}) => {
+    const lines = text.split('\n');
+    return lines.map((line, i) => new TextRun({
+        text: line,
+        break: i > 0 ? 1 : 0,
+        ...options
+    }));
+};
 
+const generateDocxSafe = async (topic, sections) => {
     const children = [];
 
     // Doc Title
@@ -90,40 +123,88 @@ const generateDocxSafe = async (topic) => {
     }));
     children.push(new Paragraph({ children: [new TextRun("")] }));
 
-    exercises.forEach(ex => {
+    sections.forEach(section => {
         // Section Title
         children.push(new Paragraph({
             children: [
                 new TextRun({
-                    text: ex.title,
+                    text: section.title, // already cleaned
                     bold: true,
                     size: 28 // 14pt
                 })
-            ]
+            ],
+            spacing: { before: 200 }
         }));
 
-        ex.questions.forEach(q => {
-            // Question
+        // Subtitle (if different/exists)
+        if (section.subtitle && section.subtitle !== section.title) {
             children.push(new Paragraph({
                 children: [
-                    new TextRun({ text: `Question ${q.id}: `, bold: true }),
-                    new TextRun(cleanText(q.text))
+                    new TextRun({
+                        text: section.subtitle,
+                        bold: true,
+                        size: 24, // 12pt
+                        italics: true
+                    })
                 ]
             }));
+        }
 
-            // Options
-            if (q.options) {
-                q.options.forEach((opt, idx) => {
-                    const letter = String.fromCharCode(65 + idx);
+        if (section.type === 'theory') {
+            section.content.forEach(contentItem => {
+                if (contentItem.subtitle) {
                     children.push(new Paragraph({
-                        children: [
-                            new TextRun(`   ${letter}. ${cleanText(opt)}`)
-                        ]
+                        children: [new TextRun({ text: cleanText(contentItem.subtitle), bold: true, size: 24 })],
+                        spacing: { before: 100 }
                     }));
-                });
-            }
-            children.push(new Paragraph({ children: [new TextRun("")] }));
-        });
+                }
+
+                if (contentItem.cases) {
+                    contentItem.cases.forEach(c => {
+                        const cellChildren = [];
+                        if (c.label) {
+                            cellChildren.push(new TextRun({ text: cleanText(c.label) + ": ", bold: true }));
+                        }
+                        if (c.formula) {
+                            // Handle multiline formula
+                            const formulaText = cleanText(c.formula);
+                            const runs = createMultilineTextRuns(formulaText);
+                            cellChildren.push(...runs);
+                        }
+
+                        children.push(new Paragraph({
+                            children: cellChildren,
+                            spacing: { after: 100 }
+                        }));
+                    });
+                }
+            });
+        }
+        else if (section.type === 'exercise') {
+            section.questions.forEach(q => {
+                // Question
+                const qText = `Question ${q.id}: ${cleanText(q.text)}`;
+                children.push(new Paragraph({
+                    children: [
+                        ...createMultilineTextRuns(qText, { bold: q.id.toString() === "Question" ? true : false }) // Simple bolding logic might need improvement
+                    ],
+                    spacing: { before: 100 }
+                }));
+
+                // Options
+                if (q.options) {
+                    q.options.forEach((opt, idx) => {
+                        const letter = String.fromCharCode(65 + idx);
+                        children.push(new Paragraph({
+                            children: [
+                                new TextRun(`   ${letter}. ${cleanText(opt)}`)
+                            ]
+                        }));
+                    });
+                }
+                // children.push(new Paragraph({ children: [new TextRun("")] })); // Spacing is handled by spacing.before/after
+            });
+        }
     });
 
     // Answer Key
@@ -134,15 +215,19 @@ const generateDocxSafe = async (topic) => {
                 bold: true,
                 size: 28
             })
-        ]
+        ],
+        spacing: { before: 400 }
     }));
 
-    exercises.forEach(ex => {
+    // Only print keys for exercises
+    sections.filter(s => s.type === 'exercise').forEach(ex => {
         children.push(new Paragraph({
             children: [new TextRun({ text: ex.title, bold: true })]
         }));
 
         const answers = ex.questions.map(q => `${q.id}. ${cleanText(q.answer)}`);
+        // Join with spacing, but text runs don't handle newlines well unless we use createMultilineTextRuns if answer has newlines?
+        // Answers are usually short.
         children.push(new Paragraph({
             children: [new TextRun(answers.join("   |   "))]
         }));
@@ -158,27 +243,21 @@ const generateDocxSafe = async (topic) => {
     });
 
     const blob = await Packer.toBlob(doc);
-    saveAs(blob, `Bai_tap_${topic.id}.docx`);
+    saveAs(blob, `Tai_lieu_${topic.id}.docx`);
 };
 
-const generatePdfSafe = async (topic) => {
-    const exercises = getAllQuestions(topic);
-    if (!exercises.length) return;
-
+const generatePdfSafe = async (topic, sections) => {
     const doc = new jsPDF();
 
     // Load ONE font and use it for EVERYTHING.
-    // This avoids issues where Bold font is missing glyphs or fails to load.
     const fontBase64 = await loadFont(FONT_URL);
 
     if (fontBase64) {
         doc.addFileToVFS("Roboto-Regular.ttf", fontBase64);
         doc.addFont("Roboto-Regular.ttf", "Roboto", "normal");
-        // We register the SAME regular font as 'bold' so standard calls don't crash
         doc.addFont("Roboto-Regular.ttf", "Roboto", "bold");
         doc.setFont("Roboto", "normal");
     } else {
-        // Fallback (might have issues with VN)
         doc.setFont("times", "normal");
     }
 
@@ -187,47 +266,100 @@ const generatePdfSafe = async (topic) => {
     const pageWidth = doc.internal.pageSize.getWidth();
     const contentWidth = pageWidth - (margin * 2);
 
-    // Title
+    const checkPageBreak = (heightAdd = 10) => {
+        if (y + heightAdd > 280) {
+            doc.addPage();
+            y = 20;
+            return true;
+        }
+        return false;
+    };
+
+    const printText = (text, x, yPos, options = {}) => {
+        // splitTextToSize handles newlines correctly if they are \n
+        const lines = doc.splitTextToSize(text, options.maxWidth || contentWidth);
+        const lineHeight = 6; // slightly larger than 5
+
+        // If the whole block fits, print it. If not, we might need to split or page break.
+        if (yPos + (lines.length * lineHeight) > 280) {
+            doc.addPage();
+            yPos = 20;
+        }
+
+        doc.text(lines, x, yPos, options);
+        return yPos + (lines.length * lineHeight);
+    };
+
+    // Global Title
     doc.setFontSize(16);
-    // Even if we set bold, it uses the Regular font file (mapped above), ensuring chars exist.
-    // It just won't look "thick", but it will be readable.
     doc.setFont(undefined, 'bold');
-    doc.text(cleanText(topic.title), pageWidth / 2, y, { align: 'center', maxWidth: contentWidth });
-    y += 15;
+    y = printText(cleanText(topic.title), pageWidth / 2, y, { align: 'center' });
+    y += 10;
 
     doc.setFontSize(11);
 
-    exercises.forEach(ex => {
-        if (y > 270) { doc.addPage(); y = 20; }
-
+    sections.forEach(section => {
+        checkPageBreak(20);
         doc.setFont(undefined, 'bold');
-        doc.text(cleanText(ex.title), margin, y, { maxWidth: contentWidth });
-        y += 7;
+        y = printText(section.title, margin, y, { maxWidth: contentWidth });
+        y += 2;
 
-        doc.setFont(undefined, 'normal');
-        ex.questions.forEach(q => {
-            if (y > 270) { doc.addPage(); y = 20; }
+        if (section.subtitle && section.subtitle !== section.title) {
+            doc.setFont(undefined, 'normal'); // fallback for italic
+            y = printText(section.subtitle, margin, y, { maxWidth: contentWidth });
+            y += 5;
+        }
 
-            const qText = `Question ${q.id}: ${cleanText(q.text)}`;
-            const splitText = doc.splitTextToSize(qText, contentWidth);
-            doc.text(splitText, margin, y);
-            y += (splitText.length * 5) + 2;
+        if (section.type === 'theory') {
+            doc.setFont(undefined, 'normal');
+            section.content.forEach(item => {
+                checkPageBreak(10);
+                if (item.subtitle) {
+                    doc.setFont(undefined, 'bold');
+                    y = printText(cleanText(item.subtitle), margin, y, { maxWidth: contentWidth });
+                    y += 3;
+                }
 
-            if (q.options) {
-                q.options.forEach((opt, i) => {
-                    if (y > 280) { doc.addPage(); y = 20; }
-                    const letter = String.fromCharCode(65 + i);
-                    const optText = `${letter}. ${cleanText(opt)}`;
-                    doc.text(optText, margin + 5, y, { maxWidth: contentWidth - 5 });
-                    y += 5;
-                });
-                y += 3;
-            }
-            y += 2;
-        });
+                doc.setFont(undefined, 'normal');
+                if (item.cases) {
+                    item.cases.forEach(c => {
+                        let text = "";
+                        if (c.label) text += cleanText(c.label) + ": ";
+                        if (c.formula) text += cleanText(c.formula);
+
+                        // Increase y slightly before each case
+                        y = printText(text, margin + 5, y, { maxWidth: contentWidth - 5 });
+                        y += 3;
+                    });
+                }
+                y += 5;
+            });
+        }
+        else if (section.type === 'exercise') {
+            section.questions.forEach(q => {
+                checkPageBreak(15);
+                doc.setFont(undefined, 'normal'); // Reset
+
+                const qText = `Question ${q.id}: ${cleanText(q.text)}`;
+                y = printText(qText, margin, y, { maxWidth: contentWidth });
+                y += 2;
+
+                if (q.options) {
+                    q.options.forEach((opt, i) => {
+                        checkPageBreak(10);
+                        const letter = String.fromCharCode(65 + i);
+                        const optText = `${letter}. ${cleanText(opt)}`;
+                        y = printText(optText, margin + 5, y, { maxWidth: contentWidth - 5 });
+                        y += 2;
+                    });
+                }
+                y += 5;
+            });
+        }
         y += 5;
     });
 
+    // Answer Key
     doc.addPage();
     y = 20;
     doc.setFontSize(14);
@@ -236,8 +368,8 @@ const generatePdfSafe = async (topic) => {
     y += 15;
 
     doc.setFontSize(11);
-    exercises.forEach(ex => {
-        if (y > 270) { doc.addPage(); y = 20; }
+    sections.filter(s => s.type === 'exercise').forEach(ex => {
+        checkPageBreak(20);
         doc.setFont(undefined, 'bold');
         doc.text(cleanText(ex.title), margin, y);
         y += 7;
@@ -245,10 +377,9 @@ const generatePdfSafe = async (topic) => {
 
         const ansList = ex.questions.map(q => `${q.id}. ${cleanText(q.answer)}`);
         const textBlob = ansList.join("   |   ");
-        const lines = doc.splitTextToSize(textBlob, contentWidth);
-        doc.text(lines, margin, y);
-        y += (lines.length * 5) + 10;
+        y = printText(textBlob, margin, y, { maxWidth: contentWidth });
+        y += 10;
     });
 
-    doc.save(`${topic.id}_exercises.pdf`);
+    doc.save(`${topic.id}_document.pdf`);
 };
