@@ -123,9 +123,9 @@ const generateDocxSafe = async (topic, sections) => {
     }));
     children.push(new Paragraph({ children: [new TextRun("")] }));
 
-    sections.forEach(section => {
+    sections.forEach((section, index) => {
         // Section Title
-        children.push(new Paragraph({
+        let paragraphOptions = {
             children: [
                 new TextRun({
                     text: section.title, // already cleaned
@@ -134,7 +134,14 @@ const generateDocxSafe = async (topic, sections) => {
                 })
             ],
             spacing: { before: 200 }
-        }));
+        };
+
+        // Add page break before subsequent sections
+        if (index > 0) {
+            paragraphOptions.pageBreakBefore = true;
+        }
+
+        children.push(new Paragraph(paragraphOptions));
 
         // Subtitle (if different/exists)
         if (section.subtitle && section.subtitle !== section.title) {
@@ -216,7 +223,8 @@ const generateDocxSafe = async (topic, sections) => {
                 size: 28
             })
         ],
-        spacing: { before: 400 }
+        spacing: { before: 400 },
+        pageBreakBefore: true // Always start answer key on new page
     }));
 
     // Only print keys for exercises
@@ -298,7 +306,13 @@ const generatePdfSafe = async (topic, sections) => {
 
     doc.setFontSize(11);
 
-    sections.forEach(section => {
+    sections.forEach((section, index) => {
+        // Force new page for subsequent sections
+        if (index > 0) {
+            doc.addPage();
+            y = 20;
+        }
+
         checkPageBreak(20);
         doc.setFont(undefined, 'bold');
         y = printText(section.title, margin, y, { maxWidth: contentWidth });
