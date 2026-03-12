@@ -4,433 +4,713 @@ export const reportedSpeechVocab8Topic = {
     children: [
         {
             id: 'unit-9-12-exercises',
-            title: 'BÀI TẬP THỰC HÀNH TỔNG HỢP',
+            title: 'BÀI TẬP THỰC HÀNH TỔNG HỢP (Global Success 8)',
             sections: [
                 {
-                    title: 'Bài tập: Chuyển các câu sau sang câu gián tiếp (Kết hợp từ vựng Unit 9 - 12)',
+                    title: 'Bài tập: Chuyển các câu sau sang câu gián tiếp (Tập trung lặp từ vựng 5 lần)',
                     type: 'exercise',
                     questions: [
                         {
-                            id: 1,
-                            text: '“A sudden earthquake might destroy our properties,” the commander warned the alien.',
-                            answer: 'The commander warned the alien (that) a sudden earthquake might destroy their properties',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: might giữ nguyên. Đổi đại từ: our -> their. Từ vựng: earthquake, destroy, property, commander, warn, alien.'
+                                                "id": 1,
+                                                "text": "Tom warned, \"The disaster will destroy the crater on Saturn tomorrow.\"",
+                                                "answer": "Tom warned (that) the disaster would destroy the crater on Saturn the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: commander, warn, disaster, destroy, crater, Saturn"
                         },
                         {
-                            id: 2,
-                            text: '“The rescue worker is using a smartwatch to text the victim now,” said the reporter.',
-                            answer: 'The reporter said (that) the rescue worker was using a smartwatch to text the victim then',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: is using -> was using, now -> then. Từ vựng: rescue worker, text, victim.'
+                                                "id": 2,
+                                                "text": "Tom reported, \"A tornado funnel caused severe damage to the property tomorrow.\"",
+                                                "answer": "Tom reported (that) a tornado funnel had caused severe damage to the property the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: tornado, funnel, damage, property"
                         },
                         {
-                            id: 3,
-                            text: '“I predict that this volcanic storm will cause severe damage,” the scientist told us.',
-                            answer: 'The scientist told us (that) he predicted that that volcanic storm would cause severe damage',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: predict -> predicted, will -> would, this -> that. Từ vựng: predict, volcanic, storm, damage, science (scientist).'
+                                                "id": 3,
+                                                "text": "Tom complained, \"The advanced application cannot check attendance instantly without a fingerprint scanner tomorrow.\"",
+                                                "answer": "Tom complained (that) the advanced application could not check attendance instantly without a fingerprint scanner the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: complain, advanced, application, attendance, instantly, fingerprint, scanner"
                         },
                         {
-                            id: 4,
-                            text: '“Did you discover any traces of aliens on Mars using that telescope?” asked Mary.',
-                            answer: 'Mary asked me if I had discovered any traces of aliens on Mars using that telescope',
-                            type: 'fill_blank',
-                            explanation: 'Câu hỏi Yes/No với if/whether. Lùi thì: Did discover -> had discovered. Từ vựng: discover, trace, alien, Mars, telescope.'
+                                                "id": 4,
+                                                "text": "Tom said, \"We can discover alien creatures in the galaxy using this new invention tomorrow.\"",
+                                                "answer": "Tom said (that) they could discover alien creatures in the galaxy using that new invention the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science(scientist), discover, alien, creature, galaxy, invention"
                         },
                         {
-                            id: 5,
-                            text: '“My biometric smartphone suddenly lost internet connection,” Peter complained.',
-                            answer: 'Peter complained (that) his biometric smartphone had suddenly lost internet connection',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: lost -> had lost. Đổi my -> his. Từ vựng: biometric, smartphone, suddenly, internet connection, complain.'
+                                                "id": 5,
+                                                "text": "Tom reported, \"A suddenly erupting volcano disrupted the Internet connection for the tablet tomorrow.\"",
+                                                "answer": "Tom reported (that) a suddenly erupting volcano had disrupted the Internet connection for the tablet the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: rescue worker, suddenly, erupt, volcanic(volcano), Internet connection, tablet"
                         },
                         {
-                            id: 6,
-                            text: '“We must pull up the emergency kit before the tsunami strikes,” the authority ordered.',
-                            answer: 'The authority ordered (that) they had to pull up the emergency kit before the tsunami struck',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: must -> had to, strikes -> struck. Đổi we -> they. Từ vựng: pull up, emergency kit, tsunami, authority.'
+                                                "id": 6,
+                                                "text": "Tom asked, \"Is the gravity on Jupiter, Uranus, and Neptune convenient for a habitable platform tomorrow?\"",
+                                                "answer": "Tom asked if the gravity on Jupiter, Uranus, and Neptune was convenient for a habitable platform the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: gravity, Jupiter, Uranus, Neptune, convenient, habitable, platform"
                         },
                         {
-                            id: 7,
-                            text: '“Are there habitable planets in our galaxy besides Earth?” the students asked the teacher.',
-                            answer: 'The students asked the teacher if there were habitable planets in their galaxy besides Earth',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: are -> were, our -> their. Từ vựng: habitable, galaxy.'
+                                                "id": 7,
+                                                "text": "Tom said, \"I will use a translation machine to overcome the language barrier and send an emoji tomorrow.\"",
+                                                "answer": "Tom said (that) he would use a translation machine to overcome the language barrier and send an emoji the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: translation machine, language barrier, emoji"
                         },
                         {
-                            id: 8,
-                            text: '“I will use a translation machine to overcome the language barrier with the alien creature tomorrow,” said the astronaut.',
-                            answer: 'The astronaut said (that) he would use a translation machine to overcome the language barrier with the alien creature the next day',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: will -> would, tomorrow -> the next day. Từ vựng: translation machine, language barrier, alien, creature.'
+                                                "id": 8,
+                                                "text": "Tom explained, \"The earthquake measured 8 on the Richter scale and the tornado funnel shook the property tomorrow.\"",
+                                                "answer": "Tom explained (that) the earthquake had measured 8 on the Richter scale and the tornado funnel had shaken the property the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: earthquake, Richter scale, tornado, funnel, shake, property"
                         },
                         {
-                            id: 9,
-                            text: '“The earthquake yesterday measured 7.5 on the Richter scale,” the news reader announced.',
-                            answer: 'The news reader announced (that) the earthquake the previous day had measured 7.5 on the Richter scale',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: measured -> had measured, yesterday -> the previous day. Từ vựng: earthquake, Richter scale.'
+                                                "id": 9,
+                                                "text": "Tom said, \"We must pull up the rocket and oppose the UFO trace tomorrow.\"",
+                                                "answer": "Tom said (that) they had to pull up the rocket and oppose the UFO trace the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: authority, pull up, rocket, oppose, UFO, trace"
                         },
                         {
-                            id: 10,
-                            text: '“This interactive application instantly checks my attendance using fingerprint and eye-tracking,” said the student.',
-                            answer: 'The student said (that) that interactive application instantly checked his attendance using fingerprint and eye-tracking',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: checks -> checked. This -> that. My -> his. Từ vựng: application, instantly, attendance, fingerprint, eye-tracking.'
+                                                "id": 10,
+                                                "text": "Tom reported, \"The live video conference on this digital screen prevents truancy and cheating tomorrow.\"",
+                                                "answer": "Tom reported (that) the live video conference on that digital screen prevented truancy and cheating the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: live, video conference, digital, screen, truancy, cheating"
                         },
                         {
-                            id: 11,
-                            text: '“Gravity on Jupiter is different from Earth,” the science teacher told us.',
-                            answer: 'The science teacher told us (that) gravity on Jupiter is different from Earth',
-                            type: 'fill_blank',
-                            explanation: 'Sự thật hiển nhiên không bắt buộc lùi thì. Có thể dùng was nhưng is tự nhiên hơn. Từ vựng: gravity, Jupiter, science.'
+                                                "id": 11,
+                                                "text": "Tom stated, \"There is a promising possibility of finding liquid on Mars or Venus tomorrow.\"",
+                                                "answer": "Tom stated (that) there was a promising possibility of finding liquid on Mars or Venus the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: promising, possibility, liquid, Mars, Venus"
                         },
                         {
-                            id: 12,
-                            text: '“The volcano will erupt and liquid rock will destroy the village,” warned the expert.',
-                            answer: 'The expert warned (that) the volcano would erupt and liquid rock would destroy the village',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: will -> would. Từ vựng: erupt, liquid, destroy, warn.'
+                                                "id": 12,
+                                                "text": "Tom reported, \"This biometric technology gives good feedback for face to face recognition tomorrow.\"",
+                                                "answer": "Tom reported (that) that biometric technology gave good feedback for face to face recognition the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: invent(inventor), biometric, technology, feedback, face to face, recognition"
                         },
                         {
-                            id: 13,
-                            text: '“We can transmit our thoughts through telepathy in this promising experiment,” said the scientist.',
-                            answer: 'The scientist said (that) they could transmit their thoughts through telepathy in that promising experiment',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: can -> could. We/our -> they/their. This -> that. Từ vựng: transmit, thought, telepathy, promising, experiment.'
+                                                "id": 13,
+                                                "text": "Tom said, \"The landslide and tsunami made the ground tremble pretty badly and caused an epidemic tomorrow.\"",
+                                                "answer": "Tom said (that) the landslide and tsunami had made the ground tremble pretty badly and caused an epidemic the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: landslide, tsunami, tremble, pretty, epidemic"
                         },
                         {
-                            id: 14,
-                            text: '“Did the tornado funnel damage your property last week?” the reporter asked the victim.',
-                            answer: 'The reporter asked the victim if the tornado funnel had damaged his property the previous week',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: did damage -> had damaged. Your -> his. Từ vựng: tornado, funnel, damage, property, victim.'
+                                                "id": 14,
+                                                "text": "Tom asked, \"Will the advanced telescope show Mercury going up to 100 Fahrenheit tomorrow?\"",
+                                                "answer": "Tom asked if the advanced telescope would show Mercury going up to 100 Fahrenheit the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: advanced, telescope, Mercury, Fahrenheit"
                         },
                         {
-                            id: 15,
-                            text: '“I oppose the use of cheating applications in our breakout rooms,” said the teacher.',
-                            answer: 'The teacher said (that) she opposed the use of cheating applications in their breakout rooms',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: oppose -> opposed. Our -> their. Từ vựng: oppose, cheating, application, breakout room.'
+                                                "id": 15,
+                                                "text": "Tom stated, \"My smartphone can develop a solution to charge the contact lens tomorrow.\"",
+                                                "answer": "Tom stated (that) her smartphone could develop a solution to charge the contact lens the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: smartphone, develop, solution, charge, contact lens"
                         },
                         {
-                            id: 16,
-                            text: '“The UFO left a massive crater when it crashed suddenly,” the commander explained.',
-                            answer: 'The commander explained (that) the UFO had left a massive crater when it crashed suddenly',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: left -> had left. Từ vựng: UFO, crater, suddenly, commander.'
+                                                "id": 16,
+                                                "text": "Tom said, \"I use a carrier pigeon or a voice message to text my social network account tomorrow.\"",
+                                                "answer": "Tom said (that) he used a carrier pigeon or a voice message to text his social network account the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: carrier pigeon, voice message, text, social network, account"
                         },
                         {
-                            id: 17,
-                            text: '“Will they develop an advanced digital technology to combat this epidemic?” people asked.',
-                            answer: 'People asked if they would develop an advanced digital technology to combat that epidemic',
-                            type: 'fill_blank',
-                            explanation: 'Will -> would. This -> that. Từ vựng: develop, advanced, digital, technology, epidemic.'
+                                                "id": 17,
+                                                "text": "Tom explained, \"We transmit thought using telepathy and holography from the emergency kit tomorrow.\"",
+                                                "answer": "Tom explained (that) they transmitted thought using telepathy and holography from the emergency kit the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: transmit, thought, telepathy, holography, emergency kit"
                         },
                         {
-                            id: 18,
-                            text: '“You must charge your tablet before joining the live video conference,” she reminded him.',
-                            answer: 'She reminded him (that) he had to charge his tablet before joining the live video conference',
-                            type: 'fill_blank',
-                            explanation: 'Must -> had to. Your -> his. Từ vựng: charge, tablet, live, video conference.'
+                                                "id": 18,
+                                                "text": "Tom said, \"We use an eye-tracking experiment to mark students in the breakout room tomorrow.\"",
+                                                "answer": "Tom said (that) they used an eye-tracking experiment to mark students in the breakout room the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: eye-tracking, experiment, mark, breakout room"
                         },
                         {
-                            id: 19,
-                            text: '“Can we use a carrier pigeon or holography to send a message to Venus?” the boy wondered.',
-                            answer: 'The boy wondered if they could use a carrier pigeon or holography to send a message to Venus',
-                            type: 'fill_blank',
-                            explanation: 'Can -> could. We -> they. Từ vựng: carrier pigeon, holography, Venus.'
+                                                "id": 19,
+                                                "text": "Tom asked, \"Can you zoom in on the storm moving towards the victim using the webcam tomorrow?\"",
+                                                "answer": "Tom asked if I could zoom in on the storm moving towards the victim using the webcam the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: zoom, storm, victim, webcam"
                         },
                         {
-                            id: 20,
-                            text: '“The earthquake made the buildings tremble and shake pretty violently,” reported the rescue worker.',
-                            answer: 'The rescue worker reported (that) the earthquake had made the buildings tremble and shake pretty violently',
-                            type: 'fill_blank',
-                            explanation: 'Made -> had made. Từ vựng: earthquake, tremble, shake, pretty, rescue worker.'
+                                                "id": 20,
+                                                "text": "Tom warned, \"The science application predicts a storm and a tsunami suddenly tomorrow.\"",
+                                                "answer": "Tom warned (that) the science application predicted a storm and a tsunami suddenly the next day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science, application, predict, storm, tsunami, suddenly"
                         },
                         {
-                            id: 21,
-                            text: '“This face to face platform has real-time feedback and contact lens support,” the inventor shared.',
-                            answer: 'The inventor shared (that) that face to face platform had real-time feedback and contact lens support',
-                            type: 'fill_blank',
-                            explanation: 'Has -> had. This -> that. Từ vựng: face to face, platform, feedback, contact lens, invent (inventor).'
+                                                "id": 21,
+                                                "text": "Mary warned, \"The disaster will destroy the crater on Saturn yesterday.\"",
+                                                "answer": "Mary warned (that) the disaster would destroy the crater on Saturn the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: commander, warn, disaster, destroy, crater, Saturn"
                         },
                         {
-                            id: 22,
-                            text: '“We saw traces of alien creatures near the crater of Mercury,” they told us.',
-                            answer: 'They told us (that) they had seen traces of alien creatures near the crater of Mercury',
-                            type: 'fill_blank',
-                            explanation: 'Saw -> had seen. We -> they. Từ vựng: trace, alien, creature, crater, Mercury.'
+                                                "id": 22,
+                                                "text": "Mary reported, \"A tornado funnel caused severe damage to the property yesterday.\"",
+                                                "answer": "Mary reported (that) a tornado funnel had caused severe damage to the property the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: tornado, funnel, damage, property"
                         },
                         {
-                            id: 23,
-                            text: '“A major landslide caused a disaster here yesterday,” the local authority confirmed.',
-                            answer: 'The local authority confirmed (that) a major landslide had caused a disaster there the previous day',
-                            type: 'fill_blank',
-                            explanation: 'Caused -> had caused. Here -> there. Yesterday -> the previous day. Từ vựng: landslide, disaster, authority.'
+                                                "id": 23,
+                                                "text": "Mary complained, \"The advanced application cannot check attendance instantly without a fingerprint scanner yesterday.\"",
+                                                "answer": "Mary complained (that) the advanced application could not check attendance instantly without a fingerprint scanner the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: complain, advanced, application, attendance, instantly, fingerprint, scanner"
                         },
                         {
-                            id: 24,
-                            text: '“I will upload the solution via my social network account tomorrow,” she promised.',
-                            answer: 'She promised (that) she would upload the solution via her social network account the next day',
-                            type: 'fill_blank',
-                            explanation: 'Will -> would. Tomorrow -> the next day. Từ vựng: solution, social network, account.'
+                                                "id": 24,
+                                                "text": "Mary said, \"We can discover alien creatures in the galaxy using this new invention yesterday.\"",
+                                                "answer": "Mary said (that) they could discover alien creatures in the galaxy using that new invention the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science(scientist), discover, alien, creature, galaxy, invention"
                         },
                         {
-                            id: 25,
-                            text: '“Can the new scanner use facial recognition to prevent truancy?” asked the principal.',
-                            answer: 'The principal asked if the new scanner could use facial recognition to prevent truancy',
-                            type: 'fill_blank',
-                            explanation: 'Can -> could. Từ vựng: scanner, recognition, truancy.'
+                                                "id": 25,
+                                                "text": "Mary reported, \"A suddenly erupting volcano disrupted the Internet connection for the tablet yesterday.\"",
+                                                "answer": "Mary reported (that) a suddenly erupting volcano had disrupted the Internet connection for the tablet the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: rescue worker, suddenly, erupt, volcanic(volcano), Internet connection, tablet"
                         },
                         {
-                            id: 26,
-                            text: '“The rocket will take flight to Saturn and Neptune next year,” announced the space agency.',
-                            answer: 'The space agency announced (that) the rocket would take flight to Saturn and Neptune the following year',
-                            type: 'fill_blank',
-                            explanation: 'Will -> would. Next year -> the following year. Từ vựng: rocket, Saturn, Neptune.'
+                                                "id": 26,
+                                                "text": "Mary asked, \"Is the gravity on Jupiter, Uranus, and Neptune convenient for a habitable platform yesterday?\"",
+                                                "answer": "Mary asked if the gravity on Jupiter, Uranus, and Neptune was convenient for a habitable platform the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: gravity, Jupiter, Uranus, Neptune, convenient, habitable, platform"
                         },
                         {
-                            id: 27,
-                            text: '“If the temperature reaches 100 degrees Fahrenheit, the liquid will boil instantly,” the teacher explained.',
-                            answer: 'The teacher explained (that) if the temperature reached 100 degrees Fahrenheit, the liquid would boil instantly',
-                            type: 'fill_blank',
-                            explanation: 'Đổi câu điều kiện loại 1 sang loại 2. Từ vựng: Fahrenheit, liquid, instantly.'
+                                                "id": 27,
+                                                "text": "Mary said, \"I will use a translation machine to overcome the language barrier and send an emoji yesterday.\"",
+                                                "answer": "Mary said (that) he would use a translation machine to overcome the language barrier and send an emoji the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: translation machine, language barrier, emoji"
                         },
                         {
-                            id: 28,
-                            text: '“Are you complaining about the language barrier in this translation machine?” he asked me.',
-                            answer: 'He asked me if I was complaining about the language barrier in that translation machine',
-                            type: 'fill_blank',
-                            explanation: 'Are -> was. You -> I. This -> that. Từ vựng: complain, language barrier, translation machine.'
+                                                "id": 28,
+                                                "text": "Mary explained, \"The earthquake measured 8 on the Richter scale and the tornado funnel shook the property yesterday.\"",
+                                                "answer": "Mary explained (that) the earthquake had measured 8 on the Richter scale and the tornado funnel had shaken the property the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: earthquake, Richter scale, tornado, funnel, shake, property"
                         },
                         {
-                            id: 29,
-                            text: '“There is a possibility of a volcanic eruption pulling up toxic gases,” warned the expert.',
-                            answer: 'The expert warned (that) there was a possibility of a volcanic eruption pulling up toxic gases',
-                            type: 'fill_blank',
-                            explanation: 'Is -> was. Từ vựng: possibility, volcanic, erupt, pull up, warn.'
+                                                "id": 29,
+                                                "text": "Mary said, \"We must pull up the rocket and oppose the UFO trace yesterday.\"",
+                                                "answer": "Mary said (that) they had to pull up the rocket and oppose the UFO trace the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: authority, pull up, rocket, oppose, UFO, trace"
                         },
                         {
-                            id: 30,
-                            text: '“I have just sent a voice message and some emojis on my smartphone,” she said.',
-                            answer: 'She said (that) she had just sent a voice message and some emojis on her smartphone',
-                            type: 'fill_blank',
-                            explanation: 'Have -> had. My -> her. Từ vựng: voice message, emoji, smartphone.'
+                                                "id": 30,
+                                                "text": "Mary reported, \"The live video conference on this digital screen prevents truancy and cheating yesterday.\"",
+                                                "answer": "Mary reported (that) the live video conference on that digital screen prevented truancy and cheating the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: live, video conference, digital, screen, truancy, cheating"
                         },
                         {
-                            id: 31,
-                            text: '“The earthquake prediction technology is a promising invention,” said the scientist.',
-                            answer: 'The scientist said (that) the earthquake prediction technology was a promising invention',
-                            type: 'fill_blank',
-                            explanation: 'Is -> was. Từ vựng: earthquake, predict, technology, promising, invention, science.'
+                                                "id": 31,
+                                                "text": "Mary stated, \"There is a promising possibility of finding liquid on Mars or Venus yesterday.\"",
+                                                "answer": "Mary stated (that) there was a promising possibility of finding liquid on Mars or Venus the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: promising, possibility, liquid, Mars, Venus"
                         },
                         {
-                            id: 32,
-                            text: '“You can zoom in or zoom out on the digital screen using this application,” the developer told me.',
-                            answer: 'The developer told me (that) I could zoom in or zoom out on the digital screen using that application',
-                            type: 'fill_blank',
-                            explanation: 'Can -> could. You -> I. This -> that. Từ vựng: zoom (in / out), digital, screen, application, develop.'
+                                                "id": 32,
+                                                "text": "Mary reported, \"This biometric technology gives good feedback for face to face recognition yesterday.\"",
+                                                "answer": "Mary reported (that) that biometric technology gave good feedback for face to face recognition the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: invent(inventor), biometric, technology, feedback, face to face, recognition"
                         },
                         {
-                            id: 33,
-                            text: '“The tornado destroyed my property, so my family is staying in an emergency kit tent,” he cried.',
-                            answer: 'He cried (that) the tornado had destroyed his property, so his family was staying in an emergency kit tent',
-                            type: 'fill_blank',
-                            explanation: 'Destroyed -> had destroyed. Is -> was. My -> his. Từ vựng: tornado, destroy, property, emergency kit.'
+                                                "id": 33,
+                                                "text": "Mary said, \"The landslide and tsunami made the ground tremble pretty badly and caused an epidemic yesterday.\"",
+                                                "answer": "Mary said (that) the landslide and tsunami had made the ground tremble pretty badly and caused an epidemic the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: landslide, tsunami, tremble, pretty, epidemic"
                         },
                         {
-                            id: 34,
-                            text: '“The advanced spaceship will approach Uranus and Venus next month,” the commander said.',
-                            answer: 'The commander said (that) the advanced spaceship would approach Uranus and Venus the following month',
-                            type: 'fill_blank',
-                            explanation: 'Will -> would. Next month -> the following month. Từ vựng: advanced, Uranus, Venus, commander.'
+                                                "id": 34,
+                                                "text": "Mary asked, \"Will the advanced telescope show Mercury going up to 100 Fahrenheit yesterday?\"",
+                                                "answer": "Mary asked if the advanced telescope would show Mercury going up to 100 Fahrenheit the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: advanced, telescope, Mercury, Fahrenheit"
                         },
                         {
-                            id: 35,
-                            text: '“I am sending a carrier pigeon because my internet connection is pretty fast,” he joked.',
-                            answer: 'He joked (that) he was sending a carrier pigeon because his internet connection was pretty fast',
-                            type: 'fill_blank',
-                            explanation: 'Am -> was. Is -> was. Từ vựng: carrier pigeon, internet connection, pretty.'
+                                                "id": 35,
+                                                "text": "Mary stated, \"My smartphone can develop a solution to charge the contact lens yesterday.\"",
+                                                "answer": "Mary stated (that) her smartphone could develop a solution to charge the contact lens the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: smartphone, develop, solution, charge, contact lens"
                         },
                         {
-                            id: 36,
-                            text: '“We must oppose fingerprint scanning in our social network accounts,” the users complained.',
-                            answer: 'The users complained (that) they had to oppose fingerprint scanning in their social network accounts',
-                            type: 'fill_blank',
-                            explanation: 'Must -> had to. Our -> their. Từ vựng: oppose, fingerprint, social network, account, complain.'
+                                                "id": 36,
+                                                "text": "Mary said, \"I use a carrier pigeon or a voice message to text my social network account yesterday.\"",
+                                                "answer": "Mary said (that) he used a carrier pigeon or a voice message to text his social network account the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: carrier pigeon, voice message, text, social network, account"
                         },
                         {
-                            id: 37,
-                            text: '“Did the tsunami leave a trace on this coast?” the rescue worker asked.',
-                            answer: 'The rescue worker asked if the tsunami had left a trace on that coast',
-                            type: 'fill_blank',
-                            explanation: 'Did leave -> had left. This -> that. Từ vựng: tsunami, trace, rescue worker.'
+                                                "id": 37,
+                                                "text": "Mary explained, \"We transmit thought using telepathy and holography from the emergency kit yesterday.\"",
+                                                "answer": "Mary explained (that) they transmitted thought using telepathy and holography from the emergency kit the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: transmit, thought, telepathy, holography, emergency kit"
                         },
                         {
-                            id: 38,
-                            text: '“My tablet has a webcam with eye-tracking technology,” the student shared proudly.',
-                            answer: 'The student shared proudly (that) his tablet had a webcam with eye-tracking technology',
-                            type: 'fill_blank',
-                            explanation: 'Has -> had. My -> his (or her). Từ vựng: tablet, webcam, eye-tracking, technology.'
+                                                "id": 38,
+                                                "text": "Mary said, \"We use an eye-tracking experiment to mark students in the breakout room yesterday.\"",
+                                                "answer": "Mary said (that) they used an eye-tracking experiment to mark students in the breakout room the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: eye-tracking, experiment, mark, breakout room"
                         },
                         {
-                            id: 39,
-                            text: '“The alien creature from the UFO used telepathy to transmit thought,” the witness claimed.',
-                            answer: 'The witness claimed (that) the alien creature from the UFO had used telepathy to transmit thought',
-                            type: 'fill_blank',
-                            explanation: 'Used -> had used. Từ vựng: alien, creature, UFO, telepathy, transmit, thought.'
+                                                "id": 39,
+                                                "text": "Mary asked, \"Can you zoom in on the storm moving towards the victim using the webcam yesterday?\"",
+                                                "answer": "Mary asked if I could zoom in on the storm moving towards the victim using the webcam the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: zoom, storm, victim, webcam"
                         },
                         {
-                            id: 40,
-                            text: '“The sudden landslide damaged the habitable zone during the epidemic,” the authority reported.',
-                            answer: 'The authority reported (that) the sudden landslide had damaged the habitable zone during the epidemic',
-                            type: 'fill_blank',
-                            explanation: 'Damaged -> had damaged. Từ vựng: sudden, landslide, damage, habitable, epidemic, authority.'
+                                                "id": 40,
+                                                "text": "Mary warned, \"The science application predicts a storm and a tsunami suddenly yesterday.\"",
+                                                "answer": "Mary warned (that) the science application predicted a storm and a tsunami suddenly the previous day",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science, application, predict, storm, tsunami, suddenly"
                         },
                         {
-                            id: 41,
-                            text: '“We will mark attendance during the live video conference using a biometric system,” the teacher announced.',
-                            answer: 'The teacher announced (that) they would mark attendance during the live video conference using a biometric system',
-                            type: 'fill_blank',
-                            explanation: 'Will -> would. Từ vựng: mark, attendance, live, video conference, biometric.'
+                                                "id": 41,
+                                                "text": "The scientist warned, \"The disaster will destroy the crater on Saturn now.\"",
+                                                "answer": "The scientist warned (that) the disaster would destroy the crater on Saturn then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: commander, warn, disaster, destroy, crater, Saturn"
                         },
                         {
-                            id: 42,
-                            text: '“The disaster on Mars shook the ground at 60 Fahrenheit,” the commander stated.',
-                            answer: 'The commander stated (that) the disaster on Mars had shaken the ground at 60 Fahrenheit',
-                            type: 'fill_blank',
-                            explanation: 'Shook -> had shaken. Từ vựng: disaster, Mars, shake, Fahrenheit, commander.'
+                                                "id": 42,
+                                                "text": "The scientist reported, \"A tornado funnel caused severe damage to the property now.\"",
+                                                "answer": "The scientist reported (that) a tornado funnel had caused severe damage to the property then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: tornado, funnel, damage, property"
                         },
                         {
-                            id: 43,
-                            text: '“Is holography a convenient solution for face to face meetings?” the manager asked.',
-                            answer: 'The manager asked if holography was a convenient solution for face to face meetings',
-                            type: 'fill_blank',
-                            explanation: 'Is -> was. Từ vựng: holography, convenient, solution, face to face.'
+                                                "id": 43,
+                                                "text": "The scientist complained, \"The advanced application cannot check attendance instantly without a fingerprint scanner now.\"",
+                                                "answer": "The scientist complained (that) the advanced application could not check attendance instantly without a fingerprint scanner then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: complain, advanced, application, attendance, instantly, fingerprint, scanner"
                         },
                         {
-                            id: 44,
-                            text: '“They discovered liquid water in a new galaxy using an advanced telescope,” the scientist said.',
-                            answer: 'The scientist said (that) they had discovered liquid water in a new galaxy using an advanced telescope',
-                            type: 'fill_blank',
-                            explanation: 'Discovered -> had discovered. Từ vựng: discover, liquid, galaxy, advanced, telescope, science.'
+                                                "id": 44,
+                                                "text": "The scientist said, \"We can discover alien creatures in the galaxy using this new invention now.\"",
+                                                "answer": "The scientist said (that) they could discover alien creatures in the galaxy using that new invention then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science(scientist), discover, alien, creature, galaxy, invention"
                         },
                         {
-                            id: 45,
-                            text: '“Will you charge your smartphone and text me immediately after the volcanic storm?” she asked him.',
-                            answer: 'She asked him if he would charge his smartphone and text her immediately after the volcanic storm',
-                            type: 'fill_blank',
-                            explanation: 'Will -> would. Your -> his. Me -> her. Từ vựng: charge, smartphone, text, volcanic, storm.'
+                                                "id": 45,
+                                                "text": "The scientist reported, \"A suddenly erupting volcano disrupted the Internet connection for the tablet now.\"",
+                                                "answer": "The scientist reported (that) a suddenly erupting volcano had disrupted the Internet connection for the tablet then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: rescue worker, suddenly, erupt, volcanic(volcano), Internet connection, tablet"
                         },
                         {
-                            id: 46,
-                            text: '“Cheating on this platform might lead to truancy,” the authority warned.',
-                            answer: 'The authority warned (that) cheating on that platform might lead to truancy',
-                            type: 'fill_blank',
-                            explanation: 'Might giữ nguyên. This -> that. Từ vựng: cheating, platform, truancy, authority, warn.'
+                                                "id": 46,
+                                                "text": "The scientist asked, \"Is the gravity on Jupiter, Uranus, and Neptune convenient for a habitable platform now?\"",
+                                                "answer": "The scientist asked if the gravity on Jupiter, Uranus, and Neptune was convenient for a habitable platform then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: gravity, Jupiter, Uranus, Neptune, convenient, habitable, platform"
                         },
                         {
-                            id: 47,
-                            text: '“The rescue worker found victims trapped underneath the crater left by the tornado,” the news said.',
-                            answer: 'The news said (that) the rescue worker had found victims trapped underneath the crater left by the tornado',
-                            type: 'fill_blank',
-                            explanation: 'Found -> had found. Từ vựng: rescue worker, victim, crater, tornado.'
+                                                "id": 47,
+                                                "text": "The scientist said, \"I will use a translation machine to overcome the language barrier and send an emoji now.\"",
+                                                "answer": "The scientist said (that) he would use a translation machine to overcome the language barrier and send an emoji then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: translation machine, language barrier, emoji"
                         },
                         {
-                            id: 48,
-                            text: '“This emoji breaks the language barrier in our global breakout rooms,” the developer highlighted.',
-                            answer: 'The developer highlighted (that) that emoji broke the language barrier in their global breakout rooms',
-                            type: 'fill_blank',
-                            explanation: 'Breaks -> broke. This -> that. Our -> their. Từ vựng: emoji, language barrier, breakout room, develop.'
+                                                "id": 48,
+                                                "text": "The scientist explained, \"The earthquake measured 8 on the Richter scale and the tornado funnel shook the property now.\"",
+                                                "answer": "The scientist explained (that) the earthquake had measured 8 on the Richter scale and the tornado funnel had shaken the property then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: earthquake, Richter scale, tornado, funnel, shake, property"
                         },
                         {
-                            id: 49,
-                            text: '“Gravity on Jupiter, Saturn, Uranus, and Neptune differs from Mars,” the astronaut taught the kids.',
-                            answer: 'The astronaut taught the kids (that) gravity on Jupiter, Saturn, Uranus, and Neptune differs from Mars',
-                            type: 'fill_blank',
-                            explanation: 'Sự thật khoa học không lùi thì. Từ vựng: gravity, Jupiter, Saturn, Uranus, Neptune, Mars.'
+                                                "id": 49,
+                                                "text": "The scientist said, \"We must pull up the rocket and oppose the UFO trace now.\"",
+                                                "answer": "The scientist said (that) they had to pull up the rocket and oppose the UFO trace then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: authority, pull up, rocket, oppose, UFO, trace"
                         },
                         {
-                            id: 50,
-                            text: '“The possibility of predicting earthquakes using this new invention is pretty high,” he believed.',
-                            answer: 'He believed (that) the possibility of predicting earthquakes using that new invention was pretty high',
-                            type: 'fill_blank',
-                            explanation: 'Is -> was. This -> that. Từ vựng: possibility, predict, earthquake, invention, pretty.'
+                                                "id": 50,
+                                                "text": "The scientist reported, \"The live video conference on this digital screen prevents truancy and cheating now.\"",
+                                                "answer": "The scientist reported (that) the live video conference on that digital screen prevented truancy and cheating then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: live, video conference, digital, screen, truancy, cheating"
                         },
                         {
-                            id: 51,
-                            text: '“I will use contact lenses containing an eye-tracking scanner in the next experiment,” she said.',
-                            answer: 'She said (that) she would use contact lenses containing an eye-tracking scanner in the following experiment',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: will -> would. Next -> the following/the next. Đổi đại từ: I -> she. Từ vựng: contact lens, scanner, eye-tracking, experiment.'
+                                                "id": 51,
+                                                "text": "The scientist stated, \"There is a promising possibility of finding liquid on Mars or Venus now.\"",
+                                                "answer": "The scientist stated (that) there was a promising possibility of finding liquid on Mars or Venus then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: promising, possibility, liquid, Mars, Venus"
                         },
                         {
-                            id: 52,
-                            text: '“Did the smartphone application measure a 9.0 on the Richter scale suddenly?” he asked the victim.',
-                            answer: 'He asked the victim if the smartphone application had measured a 9.0 on the Richter scale suddenly',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: Did measure -> had measured. Từ vựng: smartphone, application, Richter scale, suddenly, victim.'
+                                                "id": 52,
+                                                "text": "The scientist reported, \"This biometric technology gives good feedback for face to face recognition now.\"",
+                                                "answer": "The scientist reported (that) that biometric technology gave good feedback for face to face recognition then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: invent(inventor), biometric, technology, feedback, face to face, recognition"
                         },
                         {
-                            id: 53,
-                            text: '“We must pull up the heavy rocket quickly before the eruption destroys the property,” the commander ordered them.',
-                            answer: 'The commander ordered them (that) they had to pull up the heavy rocket quickly before the eruption destroyed the property',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: must -> had to, destroys -> destroyed. Đổi đại từ: we -> they. Từ vựng: pull up, rocket, erupt (eruption), destroy, property, commander.'
+                                                "id": 53,
+                                                "text": "The scientist said, \"The landslide and tsunami made the ground tremble pretty badly and caused an epidemic now.\"",
+                                                "answer": "The scientist said (that) the landslide and tsunami had made the ground tremble pretty badly and caused an epidemic then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: landslide, tsunami, tremble, pretty, epidemic"
                         },
                         {
-                            id: 54,
-                            text: '“Our advanced technology can transmit digital holography across the galaxy,” the inventor announced.',
-                            answer: 'The inventor announced (that) their advanced technology could transmit digital holography across the galaxy',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: can -> could. Đổi đại từ: Our -> their. Từ vựng: advanced, technology, transmit, digital, holography, galaxy, invent (inventor).'
+                                                "id": 54,
+                                                "text": "The scientist asked, \"Will the advanced telescope show Mercury going up to 100 Fahrenheit now?\"",
+                                                "answer": "The scientist asked if the advanced telescope would show Mercury going up to 100 Fahrenheit then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: advanced, telescope, Mercury, Fahrenheit"
                         },
                         {
-                            id: 55,
-                            text: '“The earthquake caused a massive landslide that damaged our internet connection,” she complained.',
-                            answer: 'She complained (that) the earthquake had caused a massive landslide that had damaged their internet connection',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: caused -> had caused, damaged -> had damaged. Đổi đại từ: our -> their. Từ vựng: earthquake, landslide, damage, internet connection, complain.'
+                                                "id": 55,
+                                                "text": "The scientist stated, \"My smartphone can develop a solution to charge the contact lens now.\"",
+                                                "answer": "The scientist stated (that) her smartphone could develop a solution to charge the contact lens then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: smartphone, develop, solution, charge, contact lens"
                         },
                         {
-                            id: 56,
-                            text: '“Will they use biometric facial recognition on this platform tomorrow to stop cheating and truancy?” the student asked.',
-                            answer: 'The student asked if they would use biometric facial recognition on that platform the next day to stop cheating and truancy',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: will -> would. Trạng từ: tomorrow -> the next day, this -> that. Từ vựng: biometric, recognition, platform, cheating, truancy.'
+                                                "id": 56,
+                                                "text": "The scientist said, \"I use a carrier pigeon or a voice message to text my social network account now.\"",
+                                                "answer": "The scientist said (that) he used a carrier pigeon or a voice message to text his social network account then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: carrier pigeon, voice message, text, social network, account"
                         },
                         {
-                            id: 57,
-                            text: '“My tablet displays the live attendance in the video conference and breakout room,” the teacher said.',
-                            answer: 'The teacher said (that) his tablet displayed the live attendance in the video conference and breakout room',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: displays -> displayed. Đổi đại từ: My -> his/her. Từ vựng: tablet, live, attendance, video conference, breakout room.'
+                                                "id": 57,
+                                                "text": "The scientist explained, \"We transmit thought using telepathy and holography from the emergency kit now.\"",
+                                                "answer": "The scientist explained (that) they transmitted thought using telepathy and holography from the emergency kit then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: transmit, thought, telepathy, holography, emergency kit"
                         },
                         {
-                            id: 58,
-                            text: '“I felt the ground tremble and shake, then saw a tornado funnel suddenly,” the rescue worker reported.',
-                            answer: 'The rescue worker reported (that) he had felt the ground tremble and shake, then had seen a tornado funnel suddenly',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: felt -> had felt, saw -> had seen. Đổi đại từ: I -> he. Từ vựng: tremble, shake, tornado, funnel, suddenly, rescue worker.'
+                                                "id": 58,
+                                                "text": "The scientist said, \"We use an eye-tracking experiment to mark students in the breakout room now.\"",
+                                                "answer": "The scientist said (that) they used an eye-tracking experiment to mark students in the breakout room then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: eye-tracking, experiment, mark, breakout room"
                         },
                         {
-                            id: 59,
-                            text: '“Is there any possibility that a habitable crater actually exists on Mercury?” she asked the science teacher.',
-                            answer: 'She asked the science teacher if there was any possibility that a habitable crater actually existed on Mercury',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: Is -> was, exists -> existed (hoặc giữ nguyên vì là sự thật/vấn đề khoa học). Từ vựng: possibility, habitable, crater, Mercury, science.'
+                                                "id": 59,
+                                                "text": "The scientist asked, \"Can you zoom in on the storm moving towards the victim using the webcam now?\"",
+                                                "answer": "The scientist asked if I could zoom in on the storm moving towards the victim using the webcam then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: zoom, storm, victim, webcam"
                         },
                         {
-                            id: 60,
-                            text: '“We will send a promising voice message emoji to the alien creature via our social network account,” they joked.',
-                            answer: 'They joked (that) they would send a promising voice message emoji to the alien creature via their social network account',
-                            type: 'fill_blank',
-                            explanation: 'Lùi thì: will -> would. Đổi đại từ: We/our -> they/their. Từ vựng: promising, voice message, emoji, alien, creature, social network, account.'
+                                                "id": 60,
+                                                "text": "The scientist warned, \"The science application predicts a storm and a tsunami suddenly now.\"",
+                                                "answer": "The scientist warned (that) the science application predicted a storm and a tsunami suddenly then",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science, application, predict, storm, tsunami, suddenly"
+                        },
+                        {
+                                                "id": 61,
+                                                "text": "The commander warned, \"The disaster will destroy the crater on Saturn.\"",
+                                                "answer": "The commander warned (that) the disaster would destroy the crater on Saturn",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: commander, warn, disaster, destroy, crater, Saturn"
+                        },
+                        {
+                                                "id": 62,
+                                                "text": "The commander reported, \"A tornado funnel caused severe damage to the property.\"",
+                                                "answer": "The commander reported (that) a tornado funnel had caused severe damage to the property",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: tornado, funnel, damage, property"
+                        },
+                        {
+                                                "id": 63,
+                                                "text": "The commander complained, \"The advanced application cannot check attendance instantly without a fingerprint scanner.\"",
+                                                "answer": "The commander complained (that) the advanced application could not check attendance instantly without a fingerprint scanner",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: complain, advanced, application, attendance, instantly, fingerprint, scanner"
+                        },
+                        {
+                                                "id": 64,
+                                                "text": "The commander said, \"We can discover alien creatures in the galaxy using this new invention.\"",
+                                                "answer": "The commander said (that) they could discover alien creatures in the galaxy using that new invention",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science(scientist), discover, alien, creature, galaxy, invention"
+                        },
+                        {
+                                                "id": 65,
+                                                "text": "The commander reported, \"A suddenly erupting volcano disrupted the Internet connection for the tablet.\"",
+                                                "answer": "The commander reported (that) a suddenly erupting volcano had disrupted the Internet connection for the tablet",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: rescue worker, suddenly, erupt, volcanic(volcano), Internet connection, tablet"
+                        },
+                        {
+                                                "id": 66,
+                                                "text": "The commander asked, \"Is the gravity on Jupiter, Uranus, and Neptune convenient for a habitable platform?\"",
+                                                "answer": "The commander asked if the gravity on Jupiter, Uranus, and Neptune was convenient for a habitable platform",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: gravity, Jupiter, Uranus, Neptune, convenient, habitable, platform"
+                        },
+                        {
+                                                "id": 67,
+                                                "text": "The commander said, \"I will use a translation machine to overcome the language barrier and send an emoji.\"",
+                                                "answer": "The commander said (that) he would use a translation machine to overcome the language barrier and send an emoji",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: translation machine, language barrier, emoji"
+                        },
+                        {
+                                                "id": 68,
+                                                "text": "The commander explained, \"The earthquake measured 8 on the Richter scale and the tornado funnel shook the property.\"",
+                                                "answer": "The commander explained (that) the earthquake had measured 8 on the Richter scale and the tornado funnel had shaken the property",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: earthquake, Richter scale, tornado, funnel, shake, property"
+                        },
+                        {
+                                                "id": 69,
+                                                "text": "The commander said, \"We must pull up the rocket and oppose the UFO trace.\"",
+                                                "answer": "The commander said (that) they had to pull up the rocket and oppose the UFO trace",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: authority, pull up, rocket, oppose, UFO, trace"
+                        },
+                        {
+                                                "id": 70,
+                                                "text": "The commander reported, \"The live video conference on this digital screen prevents truancy and cheating.\"",
+                                                "answer": "The commander reported (that) the live video conference on that digital screen prevented truancy and cheating",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: live, video conference, digital, screen, truancy, cheating"
+                        },
+                        {
+                                                "id": 71,
+                                                "text": "The commander stated, \"There is a promising possibility of finding liquid on Mars or Venus.\"",
+                                                "answer": "The commander stated (that) there was a promising possibility of finding liquid on Mars or Venus",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: promising, possibility, liquid, Mars, Venus"
+                        },
+                        {
+                                                "id": 72,
+                                                "text": "The commander reported, \"This biometric technology gives good feedback for face to face recognition.\"",
+                                                "answer": "The commander reported (that) that biometric technology gave good feedback for face to face recognition",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: invent(inventor), biometric, technology, feedback, face to face, recognition"
+                        },
+                        {
+                                                "id": 73,
+                                                "text": "The commander said, \"The landslide and tsunami made the ground tremble pretty badly and caused an epidemic.\"",
+                                                "answer": "The commander said (that) the landslide and tsunami had made the ground tremble pretty badly and caused an epidemic",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: landslide, tsunami, tremble, pretty, epidemic"
+                        },
+                        {
+                                                "id": 74,
+                                                "text": "The commander asked, \"Will the advanced telescope show Mercury going up to 100 Fahrenheit?\"",
+                                                "answer": "The commander asked if the advanced telescope would show Mercury going up to 100 Fahrenheit",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: advanced, telescope, Mercury, Fahrenheit"
+                        },
+                        {
+                                                "id": 75,
+                                                "text": "The commander stated, \"My smartphone can develop a solution to charge the contact lens.\"",
+                                                "answer": "The commander stated (that) her smartphone could develop a solution to charge the contact lens",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: smartphone, develop, solution, charge, contact lens"
+                        },
+                        {
+                                                "id": 76,
+                                                "text": "The commander said, \"I use a carrier pigeon or a voice message to text my social network account.\"",
+                                                "answer": "The commander said (that) he used a carrier pigeon or a voice message to text his social network account",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: carrier pigeon, voice message, text, social network, account"
+                        },
+                        {
+                                                "id": 77,
+                                                "text": "The commander explained, \"We transmit thought using telepathy and holography from the emergency kit.\"",
+                                                "answer": "The commander explained (that) they transmitted thought using telepathy and holography from the emergency kit",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: transmit, thought, telepathy, holography, emergency kit"
+                        },
+                        {
+                                                "id": 78,
+                                                "text": "The commander said, \"We use an eye-tracking experiment to mark students in the breakout room.\"",
+                                                "answer": "The commander said (that) they used an eye-tracking experiment to mark students in the breakout room",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: eye-tracking, experiment, mark, breakout room"
+                        },
+                        {
+                                                "id": 79,
+                                                "text": "The commander asked, \"Can you zoom in on the storm moving towards the victim using the webcam?\"",
+                                                "answer": "The commander asked if I could zoom in on the storm moving towards the victim using the webcam",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: zoom, storm, victim, webcam"
+                        },
+                        {
+                                                "id": 80,
+                                                "text": "The commander warned, \"The science application predicts a storm and a tsunami suddenly.\"",
+                                                "answer": "The commander warned (that) the science application predicted a storm and a tsunami suddenly",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science, application, predict, storm, tsunami, suddenly"
+                        },
+                        {
+                                                "id": 81,
+                                                "text": "The boy warned, \"The disaster will destroy the crater on Saturn next week.\"",
+                                                "answer": "The boy warned (that) the disaster would destroy the crater on Saturn the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: commander, warn, disaster, destroy, crater, Saturn"
+                        },
+                        {
+                                                "id": 82,
+                                                "text": "The boy reported, \"A tornado funnel caused severe damage to the property next week.\"",
+                                                "answer": "The boy reported (that) a tornado funnel had caused severe damage to the property the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: tornado, funnel, damage, property"
+                        },
+                        {
+                                                "id": 83,
+                                                "text": "The boy complained, \"The advanced application cannot check attendance instantly without a fingerprint scanner next week.\"",
+                                                "answer": "The boy complained (that) the advanced application could not check attendance instantly without a fingerprint scanner the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: complain, advanced, application, attendance, instantly, fingerprint, scanner"
+                        },
+                        {
+                                                "id": 84,
+                                                "text": "The boy said, \"We can discover alien creatures in the galaxy using this new invention next week.\"",
+                                                "answer": "The boy said (that) they could discover alien creatures in the galaxy using that new invention the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science(scientist), discover, alien, creature, galaxy, invention"
+                        },
+                        {
+                                                "id": 85,
+                                                "text": "The boy reported, \"A suddenly erupting volcano disrupted the Internet connection for the tablet next week.\"",
+                                                "answer": "The boy reported (that) a suddenly erupting volcano had disrupted the Internet connection for the tablet the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: rescue worker, suddenly, erupt, volcanic(volcano), Internet connection, tablet"
+                        },
+                        {
+                                                "id": 86,
+                                                "text": "The boy asked, \"Is the gravity on Jupiter, Uranus, and Neptune convenient for a habitable platform next week?\"",
+                                                "answer": "The boy asked if the gravity on Jupiter, Uranus, and Neptune was convenient for a habitable platform the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: gravity, Jupiter, Uranus, Neptune, convenient, habitable, platform"
+                        },
+                        {
+                                                "id": 87,
+                                                "text": "The boy said, \"I will use a translation machine to overcome the language barrier and send an emoji next week.\"",
+                                                "answer": "The boy said (that) he would use a translation machine to overcome the language barrier and send an emoji the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: translation machine, language barrier, emoji"
+                        },
+                        {
+                                                "id": 88,
+                                                "text": "The boy explained, \"The earthquake measured 8 on the Richter scale and the tornado funnel shook the property next week.\"",
+                                                "answer": "The boy explained (that) the earthquake had measured 8 on the Richter scale and the tornado funnel had shaken the property the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: earthquake, Richter scale, tornado, funnel, shake, property"
+                        },
+                        {
+                                                "id": 89,
+                                                "text": "The boy said, \"We must pull up the rocket and oppose the UFO trace next week.\"",
+                                                "answer": "The boy said (that) they had to pull up the rocket and oppose the UFO trace the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: authority, pull up, rocket, oppose, UFO, trace"
+                        },
+                        {
+                                                "id": 90,
+                                                "text": "The boy reported, \"The live video conference on this digital screen prevents truancy and cheating next week.\"",
+                                                "answer": "The boy reported (that) the live video conference on that digital screen prevented truancy and cheating the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: live, video conference, digital, screen, truancy, cheating"
+                        },
+                        {
+                                                "id": 91,
+                                                "text": "The boy stated, \"There is a promising possibility of finding liquid on Mars or Venus next week.\"",
+                                                "answer": "The boy stated (that) there was a promising possibility of finding liquid on Mars or Venus the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: promising, possibility, liquid, Mars, Venus"
+                        },
+                        {
+                                                "id": 92,
+                                                "text": "The boy reported, \"This biometric technology gives good feedback for face to face recognition next week.\"",
+                                                "answer": "The boy reported (that) that biometric technology gave good feedback for face to face recognition the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: invent(inventor), biometric, technology, feedback, face to face, recognition"
+                        },
+                        {
+                                                "id": 93,
+                                                "text": "The boy said, \"The landslide and tsunami made the ground tremble pretty badly and caused an epidemic next week.\"",
+                                                "answer": "The boy said (that) the landslide and tsunami had made the ground tremble pretty badly and caused an epidemic the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: landslide, tsunami, tremble, pretty, epidemic"
+                        },
+                        {
+                                                "id": 94,
+                                                "text": "The boy asked, \"Will the advanced telescope show Mercury going up to 100 Fahrenheit next week?\"",
+                                                "answer": "The boy asked if the advanced telescope would show Mercury going up to 100 Fahrenheit the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: advanced, telescope, Mercury, Fahrenheit"
+                        },
+                        {
+                                                "id": 95,
+                                                "text": "The boy stated, \"My smartphone can develop a solution to charge the contact lens next week.\"",
+                                                "answer": "The boy stated (that) her smartphone could develop a solution to charge the contact lens the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: smartphone, develop, solution, charge, contact lens"
+                        },
+                        {
+                                                "id": 96,
+                                                "text": "The boy said, \"I use a carrier pigeon or a voice message to text my social network account next week.\"",
+                                                "answer": "The boy said (that) he used a carrier pigeon or a voice message to text his social network account the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: carrier pigeon, voice message, text, social network, account"
+                        },
+                        {
+                                                "id": 97,
+                                                "text": "The boy explained, \"We transmit thought using telepathy and holography from the emergency kit next week.\"",
+                                                "answer": "The boy explained (that) they transmitted thought using telepathy and holography from the emergency kit the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: transmit, thought, telepathy, holography, emergency kit"
+                        },
+                        {
+                                                "id": 98,
+                                                "text": "The boy said, \"We use an eye-tracking experiment to mark students in the breakout room next week.\"",
+                                                "answer": "The boy said (that) they used an eye-tracking experiment to mark students in the breakout room the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: eye-tracking, experiment, mark, breakout room"
+                        },
+                        {
+                                                "id": 99,
+                                                "text": "The boy asked, \"Can you zoom in on the storm moving towards the victim using the webcam next week?\"",
+                                                "answer": "The boy asked if I could zoom in on the storm moving towards the victim using the webcam the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: zoom, storm, victim, webcam"
+                        },
+                        {
+                                                "id": 100,
+                                                "text": "The boy warned, \"The science application predicts a storm and a tsunami suddenly next week.\"",
+                                                "answer": "The boy warned (that) the science application predicted a storm and a tsunami suddenly the following week",
+                                                "type": "fill_blank",
+                                                "explanation": "Lùi thì và đổi đại từ phù hợp. Từ vựng: science, application, predict, storm, tsunami, suddenly"
                         }
-                    ]
+]
                 }
             ]
         }
