@@ -30,6 +30,7 @@ import { sentenceTransformationTopic } from './topics/sentenceTransformation';
 import { communicationInTheFutureTopic } from './topics/communicationInTheFuture';
 import { scienceAndTechnologyTopic } from './topics/scienceAndTechnology';
 import { lifeOnOtherPlanetsTopic } from './topics/lifeOnOtherPlanets';
+import { reportedSpeechVocab8Topic } from './topics/reportedSpeechVocab8';
 
 
 
@@ -67,9 +68,5 @@ export const TOPICS = [
   sentenceTransformationTopic,
   communicationInTheFutureTopic,
   scienceAndTechnologyTopic,
-  lifeOnOtherPlanetsTopic
-
-
-
-
-];
+  lifeOnOtherPlanetsTopic,
+  reportedSpeechVocab8Topic];
