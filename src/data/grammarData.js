@@ -31,10 +31,7 @@ import { communicationInTheFutureTopic } from './topics/communicationInTheFuture
 import { scienceAndTechnologyTopic } from './topics/scienceAndTechnology';
 import { lifeOnOtherPlanetsTopic } from './topics/lifeOnOtherPlanets';
 import { reportedSpeechVocab8Topic } from './topics/reportedSpeechVocab8';
-
-
-
-
+import { reportedSpeech10Topic } from './topics/reportedSpeech10';
 
 export const TOPICS = [
   tensesTopic,
@@ -69,4 +66,6 @@ export const TOPICS = [
   communicationInTheFutureTopic,
   scienceAndTechnologyTopic,
   lifeOnOtherPlanetsTopic,
-  reportedSpeechVocab8Topic];
+  reportedSpeechVocab8Topic,
+  reportedSpeech10Topic];
+
