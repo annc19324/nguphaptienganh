@@ -32,6 +32,7 @@ import { scienceAndTechnologyTopic } from './topics/scienceAndTechnology';
 import { lifeOnOtherPlanetsTopic } from './topics/lifeOnOtherPlanets';
 import { reportedSpeechVocab8Topic } from './topics/reportedSpeechVocab8';
 import { reportedSpeech10Topic } from './topics/reportedSpeech10';
+import { unit10_11_12ExercisesTopic } from './topics/unit10_11_12_exercises';
 
 export const TOPICS = [
   tensesTopic,
@@ -67,5 +68,6 @@ export const TOPICS = [
   scienceAndTechnologyTopic,
   lifeOnOtherPlanetsTopic,
   reportedSpeechVocab8Topic,
-  reportedSpeech10Topic];
+  reportedSpeech10Topic,
+  unit10_11_12ExercisesTopic];
 
